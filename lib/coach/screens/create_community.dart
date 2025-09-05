@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, deprecated_member_use, use_build_context_synchronously, avoid_print, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+
 import 'package:calmleticsarab/coach/screens/choose_plan.dart';
 import 'package:calmleticsarab/coach/screens/community_pop_code.dart';
 import 'package:calmleticsarab/coach/tabbars/tab_bar.dart';
 import 'package:calmleticsarab/http/api.dart';
+import 'package:flutter/material.dart';
 
 class CreateCommunity extends StatefulWidget {
-  const CreateCommunity({super.key});
-
   @override
   _CreateCommunityState createState() => _CreateCommunityState();
 }
@@ -35,8 +36,9 @@ class _CreateCommunityState extends State<CreateCommunity> {
         plans = response;
       });
 
-      List<String> planIds =
-          response.map((plan) => plan['plan_id'].toString()).toList();
+      List<String> planIds = response
+          .map((plan) => plan['plan_id'].toString())
+          .toList();
       print("Plan IDs: $planIds");
     } catch (e) {
       print('Error fetching plans: $e');
@@ -55,7 +57,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
         backgroundColor: const Color.fromRGBO(255, 252, 249, 1),
         elevation: 0,
         title: const Text(
-          "Create Community",
+          " إنشاء مجتمع",
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
         centerTitle: true,
@@ -63,7 +65,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          Container(
             width: double.infinity,
             height: 300,
             child: Image.asset(
@@ -74,9 +76,9 @@ class _CreateCommunityState extends State<CreateCommunity> {
           Expanded(
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(25),
                   topLeft: Radius.circular(25),
                 ),
@@ -101,7 +103,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
                             Icons.edit,
                             color: Colors.grey,
                           ),
-                          hintText: "Name Your Community",
+                          hintText: "اسم المجتمع",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide.none,
@@ -112,7 +114,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        "Choose Level",
+                        " اختر المستوى",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -134,7 +136,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        "Choose Plan",
+                        "اختر الخطة",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -144,46 +146,45 @@ class _CreateCommunityState extends State<CreateCommunity> {
                       const SizedBox(height: 10),
                       selectedLevel == null
                           ? const Text(
-                            "Please select a level to view plans.",
-                            style: TextStyle(color: Colors.red),
-                          )
+                              "Please select a level to view plans.",
+                              style: TextStyle(color: Colors.red),
+                            )
                           : SizedBox(
-                            height: 145,
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: plans.length,
-                              itemBuilder: (context, index) {
-                                final plan = plans[index];
-                                bool isSelected =
-                                    plan['plan_id'].toString() ==
-                                    selectedPlanId;
+                              height: 145,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: plans.length,
+                                itemBuilder: (context, index) {
+                                  final plan = plans[index];
+                                  bool isSelected =
+                                      plan['plan_id'].toString() ==
+                                      selectedPlanId;
 
-                                return GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      selectedPlanId =
-                                          plan['plan_id'].toString();
-                                    });
-                                  },
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 16),
-                                    padding: const EdgeInsets.all(16),
-                                    width: 280,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(
-                                        color: const Color.fromRGBO(
-                                          218,
-                                          218,
-                                          218,
-                                          1,
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedPlanId = plan['plan_id']
+                                            .toString();
+                                      });
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 16),
+                                      padding: const EdgeInsets.all(16),
+                                      width: 280,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: const Color.fromRGBO(
+                                            218,
+                                            218,
+                                            218,
+                                            1,
+                                          ),
+                                          width: 1,
                                         ),
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow:
-                                          isSelected
-                                              ? [
+                                        borderRadius: BorderRadius.circular(30),
+                                        boxShadow: isSelected
+                                            ? [
                                                 BoxShadow(
                                                   color: Colors.black
                                                       .withOpacity(0.1),
@@ -191,106 +192,104 @@ class _CreateCommunityState extends State<CreateCommunity> {
                                                   spreadRadius: 2,
                                                 ),
                                               ]
-                                              : [],
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Text(
-                                              'Total Sessions',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            const SizedBox(width: 10),
-                                            CircleAvatar(
-                                              radius: 16,
-                                              backgroundColor:
-                                                  const Color.fromRGBO(
-                                                    233,
-                                                    239,
-                                                    235,
-                                                    1,
-                                                  ),
-                                              child: Text(
-                                                '${plan['sessions_count']}',
-                                                style: const TextStyle(
-                                                  color: Color.fromRGBO(
-                                                    80,
-                                                    112,
-                                                    92,
-                                                    1,
-                                                  ),
-                                                  fontWeight: FontWeight.bold,
+                                            : [],
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              const Text(
+                                                'إجمالي الجلسات',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
                                               ),
-                                            ),
-                                            const Spacer(),
-                                            GestureDetector(
-                                              onTap: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder:
-                                                        (
-                                                          context,
-                                                        ) => ChoosePlanPage(
-                                                          planId:
-                                                              plan['plan_id']
-                                                                  .toString(),
-                                                        ),
+                                              const SizedBox(width: 10),
+                                              CircleAvatar(
+                                                radius: 16,
+                                                backgroundColor:
+                                                    const Color.fromRGBO(
+                                                      233,
+                                                      239,
+                                                      235,
+                                                      1,
+                                                    ),
+                                                child: Text(
+                                                  '${plan['sessions_count']}',
+                                                  style: const TextStyle(
+                                                    color: Color.fromRGBO(
+                                                      80,
+                                                      112,
+                                                      92,
+                                                      1,
+                                                    ),
+                                                    fontWeight: FontWeight.bold,
                                                   ),
-                                                );
-                                              },
-                                              child: const Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 16,
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 20),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            SessionItem(
-                                              imageUrl:
-                                                  plan['audio_image'] != null
-                                                      ? '$baseUrl${plan['audio_image']}'
-                                                      : '',
-                                              label:
-                                                  '${plan['audio_percentage']}% Audio',
-                                            ),
-                                            SessionItem(
-                                              imageUrl:
-                                                  plan['video_image'] != null
-                                                      ? '$baseUrl${plan['video_image']}'
-                                                      : '',
-                                              label:
-                                                  '${plan['video_percentage']}% Video',
-                                            ),
-                                            SessionItem(
-                                              imageUrl:
-                                                  plan['pdf_image'] != null
-                                                      ? '$baseUrl${plan['pdf_image']}'
-                                                      : '',
-                                              label:
-                                                  '${plan['pdf_percentage']}% Articles',
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                              const Spacer(),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ChoosePlanPage(
+                                                            planId:
+                                                                plan['plan_id']
+                                                                    .toString(),
+                                                          ),
+                                                    ),
+                                                  );
+                                                },
+                                                child: const Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  size: 16,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 20),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              SessionItem(
+                                                imageUrl:
+                                                    plan['audio_image'] != null
+                                                    ? '$baseUrl${plan['audio_image']}'
+                                                    : '',
+                                                label:
+                                                    '${plan['audio_percentage']}% Audio',
+                                              ),
+                                              SessionItem(
+                                                imageUrl:
+                                                    plan['video_image'] != null
+                                                    ? '$baseUrl${plan['video_image']}'
+                                                    : '',
+                                                label:
+                                                    '${plan['video_percentage']}% Video',
+                                              ),
+                                              SessionItem(
+                                                imageUrl:
+                                                    plan['pdf_image'] != null
+                                                    ? '$baseUrl${plan['pdf_image']}'
+                                                    : '',
+                                                label:
+                                                    '${plan['pdf_percentage']}% Articles',
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             ),
-                          ),
                       const SizedBox(height: 70),
                       SizedBox(
                         width: double.infinity,
@@ -337,10 +336,10 @@ class _CreateCommunityState extends State<CreateCommunity> {
 
                               if (response['data'] != null &&
                                   response['data']['code'] != null) {
-                                String otpCode =
-                                    response['data']['code'].toString();
-                                String communityId =
-                                    response['data']['id'].toString();
+                                String otpCode = response['data']['code']
+                                    .toString();
+                                String communityId = response['data']['id']
+                                    .toString();
 
                                 createCommunityPopDialog(
                                   context,
@@ -376,7 +375,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
                             ),
                           ),
                           child: const Text(
-                            "Next",
+                            "التالي",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
                         ),
@@ -424,7 +423,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
                   ),
                 ),
                 const Text(
-                  "Successfully",
+                  "تهانينا!",
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 30),
@@ -435,7 +434,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
                 ),
                 const SizedBox(height: 30),
                 Text(
-                  "Your OTP Code: $otpCode",
+                  "رمزك: $otpCode",
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -448,11 +447,10 @@ class _CreateCommunityState extends State<CreateCommunity> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder:
-                            (context) => CommunityPopCode(
-                              otpCode: otpCode,
-                              communityId: communityId,
-                            ),
+                        builder: (context) => CommunityPopCode(
+                          otpCode: otpCode,
+                          communityId: communityId,
+                        ),
                       ),
                     );
                   },
@@ -464,7 +462,7 @@ class _CreateCommunityState extends State<CreateCommunity> {
                     ),
                   ),
                   child: const Text(
-                    "Next",
+                    "التالي",
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
@@ -491,10 +489,9 @@ class SessionItem extends StatelessWidget {
           radius: 16,
           backgroundColor: const Color.fromRGBO(233, 239, 235, 1),
           backgroundImage: imageUrl.isNotEmpty ? NetworkImage(imageUrl) : null,
-          child:
-              imageUrl.isEmpty
-                  ? const Icon(Icons.error, color: Colors.red, size: 18)
-                  : null,
+          child: imageUrl.isEmpty
+              ? const Icon(Icons.error, color: Colors.red, size: 18)
+              : null,
         ),
         const SizedBox(height: 6),
         Text(

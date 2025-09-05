@@ -33,9 +33,9 @@ class LeaderboardTabBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildTabButton('Daily'),
-            _buildTabButton('Weekly'),
-            _buildTabButton('All'),
+            _buildTabButton('يوميا'),
+            _buildTabButton('اسبوعيا'),
+            _buildTabButton('كل الوقت'),
           ],
         ),
       ),

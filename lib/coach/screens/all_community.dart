@@ -1,12 +1,16 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: avoid_print
+
+
 import 'package:calmleticsarab/coach/VR/vr_schedula.dart';
 import 'package:calmleticsarab/coach/screens/coach_home.dart';
+import 'package:calmleticsarab/coach/screens/community_pop_code.dart';
 import 'package:calmleticsarab/coach/screens/players.dart';
 import 'package:calmleticsarab/coach/tabbars/community_tab_bar.dart';
 import 'package:calmleticsarab/coach/widget/bottom_navigation_bar.dart';
 import 'package:calmleticsarab/coach/widgetsOfHome/community_card.dart';
 import 'package:calmleticsarab/http/api.dart';
-import 'package:calmleticsarab/coach/screens/community_pop_code.dart';
+import 'package:flutter/material.dart';
+
 
 class AllCommunity extends StatefulWidget {
   final bool showBottomBar;
@@ -18,7 +22,7 @@ class AllCommunity extends StatefulWidget {
 }
 
 class _AllCommunityState extends State<AllCommunity> {
-  String selectedTab = 'all';
+  String selectedTab = 'الكل';
   int _selectedIndex = 3;
   final Api api = Api();
 
@@ -28,7 +32,7 @@ class _AllCommunityState extends State<AllCommunity> {
   @override
   void initState() {
     super.initState();
-    fetchCommunities('all');
+    fetchCommunities('الكل');
   }
 
   Future<void> fetchCommunities(String level) async {
@@ -59,7 +63,7 @@ class _AllCommunityState extends State<AllCommunity> {
 
   void _navigateToScreen(int index) {
     switch (index) {
-      case 0:
+        case 0:
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const CoachHome()),
@@ -68,7 +72,7 @@ class _AllCommunityState extends State<AllCommunity> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const VRScheduleScreen()),
+          MaterialPageRoute(builder: (context) =>  VRScheduleScreen()),
         );
         break;
       case 2:
@@ -77,7 +81,7 @@ class _AllCommunityState extends State<AllCommunity> {
           MaterialPageRoute(builder: (context) => const Players()),
         );
       case 3:
-        Navigator.pushReplacement(
+       Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const AllCommunity()),
         );
@@ -97,7 +101,7 @@ class _AllCommunityState extends State<AllCommunity> {
             const SizedBox(height: 40),
             TextField(
               decoration: InputDecoration(
-                hintText: "Search",
+                hintText: "ابحث",
                 prefixIcon: const Icon(Icons.search, color: Colors.grey),
                 filled: true,
                 fillColor: Colors.white,
@@ -118,7 +122,7 @@ class _AllCommunityState extends State<AllCommunity> {
             ),
             const SizedBox(height: 16),
             const Text(
-              "Community",
+              "المجتمع",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -127,69 +131,64 @@ class _AllCommunityState extends State<AllCommunity> {
             ),
             const SizedBox(height: 8),
             Expanded(
-              child:
-                  isLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : communities.isEmpty
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : communities.isEmpty
                       ? const Center(child: Text("No communities found"))
                       : ListView.builder(
-                        itemCount: communities.length,
-                        itemBuilder: (context, index) {
-                          final community = communities[index];
-                          final communityId =
-                              community['community_id'].toString();
-                          final code = community['code'] ?? 'N/A';
+                          itemCount: communities.length,
+                          itemBuilder: (context, index) {
+                            final community = communities[index];
+                            final communityId =
+                                community['community_id'].toString();
+                            final code = community['code'] ?? 'N/A';
 
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder:
-                                        (context) => CommunityPopCode(
-                                          communityId: communityId,
-                                          otpCode: code,
-                                        ),
-                                  ),
-                                );
-                              },
-                              child: CommunityCard(
-                                cardWidth:
-                                    MediaQuery.of(context).size.width.toInt(),
-                                title: community['name'] ?? 'No Name',
-                                level: community['level'] ?? 'N/A',
-                                players: community['players_count'] ?? 0,
-                                date: community['created_at'] ?? '',
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CommunityPopCode(
+                                        communityId: communityId,
+                                        otpCode: code,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: CommunityCard(
+                                  cardWidth:
+                                      MediaQuery.of(context).size.width.toInt(),
+                                  title: community['name'] ?? 'No Name',
+                                  level: community['level'] ?? 'N/A',
+                                  players: community['players_count'] ?? 0,
+                                  date: community['created_at'] ?? '',
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
+                            );
+                          },
+                        ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar:
-          widget.showBottomBar
-              ? CustomBottomNavigationBar(
-                selectedIndex: _selectedIndex,
-                onItemTapped: _onItemTapped,
-              )
-              : null,
-      floatingActionButton:
-          widget.showBottomBar
-              ? FloatingActionButton(
-                onPressed: () => print("FAB tapped"),
-                backgroundColor: const Color.fromRGBO(106, 149, 122, 1),
-                child: const Icon(Icons.add, color: Colors.white, size: 28),
-              )
-              : null,
-      floatingActionButtonLocation:
-          widget.showBottomBar
-              ? FloatingActionButtonLocation.centerDocked
-              : null,
+      bottomNavigationBar: widget.showBottomBar
+          ? CustomBottomNavigationBar(
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+            )
+          : null,
+      floatingActionButton: widget.showBottomBar
+          ? FloatingActionButton(
+              onPressed: () => print("FAB tapped"),
+              backgroundColor: const Color.fromRGBO(106, 149, 122, 1),
+              child: const Icon(Icons.add, color: Colors.white, size: 28),
+            )
+          : null,
+      floatingActionButtonLocation: widget.showBottomBar
+          ? FloatingActionButtonLocation.centerDocked
+          : null,
     );
   }
 }

@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:calmleticsarab/coach/VR/vr.dart';
+
+// ignore_for_file: avoid_print, use_build_context_synchronously
+
+import 'package:calmleticsarab/coach/screens/coach_home.dart';
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
+import 'package:flutter/material.dart';
+
 
 class CoachAvatar extends StatefulWidget {
   const CoachAvatar({super.key});
@@ -13,17 +17,15 @@ class CoachAvatar extends StatefulWidget {
 class _CoachAvatarState extends State<CoachAvatar> {
   int? selectedAvatarIndex;
   String? selectedAvatarUrl;
-  final Api api = Api();
+  final Api api = Api(); 
 
-  final List<String> avatarImages = List.generate(
-    6,
-    (index) => 'assets/images/coach$index.png',
-  );
+  final List<String> avatarImages =
+      List.generate(6, (index) => 'assets/images/coach$index.png');
 
   void _onAvatarSelected(int index) {
     setState(() {
       selectedAvatarIndex = index;
-      selectedAvatarUrl = avatarImages[index];
+      selectedAvatarUrl = avatarImages[index]; 
     });
   }
 
@@ -31,19 +33,17 @@ class _CoachAvatarState extends State<CoachAvatar> {
     if (selectedAvatarUrl == null) return;
 
     bool success = await api.saveSelectedAvatar(selectedAvatarUrl!);
-
+    
     if (success) {
       print("Avatar saved successfully!");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Vr()),
+        MaterialPageRoute(builder: (context) => const CoachHome()),
       );
     } else {
       print("Failed to save avatar.");
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Failed to save avatar. Please try again."),
-        ),
+        const SnackBar(content: Text("Failed to save avatar. Please try again.")),
       );
     }
   }
@@ -73,17 +73,14 @@ class _CoachAvatarState extends State<CoachAvatar> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
-                "Select an avatar for your profile",
+                "اختر صورة رمزية لملفك الشخصي",
                 style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: textcolor,
-                ),
+                    fontSize: 25, fontWeight: FontWeight.bold, color: textcolor),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
               const Text(
-                "This will represent your picture on your profile. We like you to protect your identity.",
+                "دي هتكون صورتك في ملفك الشخصي علشان نحافظ على هويتك",
                 style: TextStyle(fontSize: 16, color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
@@ -94,10 +91,10 @@ class _CoachAvatarState extends State<CoachAvatar> {
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                        ),
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
                     itemCount: avatarImages.length,
                     itemBuilder: (context, index) {
                       bool isSelected = selectedAvatarIndex == index;
@@ -107,20 +104,14 @@ class _CoachAvatarState extends State<CoachAvatar> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                border:
-                                    isSelected
-                                        ? Border.all(
-                                          color: kPrimaryColor,
-                                          width: 2,
-                                        )
-                                        : null,
+                                border: isSelected
+                                    ? Border.all(color: kPrimaryColor, width: 2)
+                                    : null,
                                 shape: BoxShape.circle,
                               ),
                               child: CircleAvatar(
                                 radius: 45,
-                                backgroundImage: AssetImage(
-                                  avatarImages[index],
-                                ),
+                                backgroundImage: AssetImage(avatarImages[index]),
                               ),
                             ),
                             if (isSelected)
@@ -145,14 +136,13 @@ class _CoachAvatarState extends State<CoachAvatar> {
                 ),
               ),
               ElevatedButton(
-                onPressed:
-                    selectedAvatarIndex != null ? _saveAvatarAndProceed : null,
+                onPressed: selectedAvatarIndex != null ? _saveAvatarAndProceed : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimaryColor,
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 child: const Text(
-                  "Next",
+                  "التالي",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),

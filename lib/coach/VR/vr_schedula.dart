@@ -1,41 +1,38 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:calmleticsarab/constant.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class VRScheduleScreen extends StatelessWidget {
-  const VRScheduleScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgcolor, // Light background
+      backgroundColor: Color(0xFFFCF8F5), // Light background
       appBar: AppBar(
-        backgroundColor: bgcolor,
+        backgroundColor: Color(0xFFFCF8F5),
         elevation: 0,
-        title: const Text("VR Sessions", style: TextStyle(color: Colors.black)),
+        title: Text("جلسات VR", style: TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
       body: Column(
         children: [
           // Calendar Section
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
             child: TableCalendar(
               firstDay: DateTime.utc(2020, 1, 1),
               lastDay: DateTime.utc(2030, 12, 31),
               focusedDay: DateTime.now(),
               calendarFormat: CalendarFormat.week,
-              headerStyle: const HeaderStyle(
+              headerStyle: HeaderStyle(
                 formatButtonVisible: false,
                 titleCentered: true,
-                titleTextStyle: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                titleTextStyle:
+                    TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              calendarStyle: const CalendarStyle(
+              calendarStyle: CalendarStyle(
                 todayDecoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  color: Color(0xFF5D735F),
                   shape: BoxShape.circle,
                 ),
                 selectedDecoration: BoxDecoration(
@@ -49,17 +46,14 @@ class VRScheduleScreen extends StatelessWidget {
           // Time Slots
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              itemCount: 4, // Example slots
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              itemCount: 10, // Example slots
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 10, top: 5),
-                  child: ScheduleCard(
-                    time: "${1 + index} PM",
-                    name: "Savannah Nguyen",
-                    team: "Anxiety Warriors",
-                    status: "low",
-                  ),
+                return ScheduleCard(
+                  time: "${1 + index} مساءا",
+                  name: "احمد",
+                  team: "القلق",
+                  status: "منخفض",
                 );
               },
             ),
@@ -78,7 +72,6 @@ class ScheduleCard extends StatelessWidget {
   final String status;
 
   const ScheduleCard({
-    super.key,
     required this.time,
     required this.name,
     required this.team,
@@ -88,54 +81,42 @@ class ScheduleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding: EdgeInsets.symmetric(vertical: 5),
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: const Color(0xffE9EFEB),
+          color: Color(0xFFDFF1D8),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           children: [
             Text(time),
-            const SizedBox(width: 8),
-            const CircleAvatar(
-              backgroundColor: kPrimaryColor,
+            CircleAvatar(
+              backgroundColor: Colors.blue,
               radius: 20,
               child: Icon(Icons.person, color: Colors.white),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    team,
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
-                  ),
+                  Text(name,
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                  Text(team,
+                      style: TextStyle(fontSize: 12, color: Colors.grey)),
                 ],
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
-                color: const Color(0xffEFFFCE),
+                color: Colors.lightGreenAccent,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Text(
-                status,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: Text(status,
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
             ),
           ],
         ),

@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+
+// ignore_for_file: avoid_print
+
 import 'package:calmleticsarab/coach/VR/vr_schedula.dart';
 import 'package:calmleticsarab/coach/screens/all_community.dart';
 import 'package:calmleticsarab/coach/screens/coach_home.dart';
@@ -6,6 +8,7 @@ import 'package:calmleticsarab/coach/tabbars/player_tab_bar.dart';
 import 'package:calmleticsarab/coach/widget/bottom_navigation_bar.dart';
 import 'package:calmleticsarab/coach/widgetsOfHome/player_progress_card.dart';
 import 'package:calmleticsarab/http/api.dart';
+import 'package:flutter/material.dart';
 
 class Players extends StatefulWidget {
   final bool showBottomBar;
@@ -34,7 +37,7 @@ class _PlayersState extends State<Players> {
   Future<void> _fetchPlayers() async {
     List<Map<String, dynamic>> fetchedPlayers = [];
 
-    if (status == null || status!.toLowerCase() == 'all') {
+    if (status == null || status!.toLowerCase() == 'الكل') {
       fetchedPlayers = await api.fetchPlayers(); // جلب جميع اللاعبين
     } else {
       fetchedPlayers = await api.fetchFilteredPlayers(
@@ -68,11 +71,15 @@ class _PlayersState extends State<Players> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const VRScheduleScreen()),
+          MaterialPageRoute(builder: (context) => VRScheduleScreen()),
         );
         break;
       case 2:
-        break; // Already on Players screen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Players()),
+        );
+        break;
       case 3:
         Navigator.pushReplacement(
           context,
@@ -110,7 +117,7 @@ class _PlayersState extends State<Players> {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: "Search",
+                      hintText: "ابحث",
                       prefixIcon: const Icon(Icons.search, color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white,
@@ -124,7 +131,7 @@ class _PlayersState extends State<Players> {
             ),
             const SizedBox(height: 20),
             PlayerTabBar(
-              selectedTab: status ?? 'all',
+              selectedTab: status ?? 'الكل',
               onTabSelected: (tab) {
                 setState(() {
                   status = tab;
@@ -135,7 +142,7 @@ class _PlayersState extends State<Players> {
             ),
             const SizedBox(height: 16),
             const Text(
-              "Players",
+              "اللاعبون",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -144,55 +151,49 @@ class _PlayersState extends State<Players> {
             ),
             const SizedBox(height: 16),
             Expanded(
-              child:
-                  isLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : players.isEmpty
-                      ? const Center(child: Text("No players found"))
-                      : ListView.builder(
-                        itemCount: players.length,
-                        itemBuilder: (context, index) {
-                          var player = players[index];
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : players.isEmpty
+                  ? const Center(child: Text("No players found"))
+                  : ListView.builder(
+                      itemCount: players.length,
+                      itemBuilder: (context, index) {
+                        var player = players[index];
 
-                          return PlayerProgressCard(
-                            playerName: player['player_name'] ?? 'Unknown',
-                            communityName:
-                                player['community_name'] ?? 'Unknown',
-                            statusMessage:
-                                player['status_message'] ?? 'No status',
-                            playerImage: player['image'],
-                            imageUrl:
-                                player['status_image'] != null
-                                    ? '$baseUrl${player['status_image']}'
-                                    : '',
-                          );
-                        },
-                      ),
+                        return PlayerProgressCard(
+                          playerName: player['player_name'] ?? 'Unknown',
+                          communityName: player['community_name'] ?? 'Unknown',
+                          statusMessage:
+                              player['status_message'] ?? 'No status',
+                          playerImage: player['image'],
+                          imageUrl: player['status_image'] != null
+                              ? '$baseUrl${player['status_image']}'
+                              : '',
+                        );
+                      },
+                    ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar:
-          widget.showBottomBar
-              ? CustomBottomNavigationBar(
-                selectedIndex: _selectedIndex,
-                onItemTapped: _onItemTapped,
-              )
-              : null,
-      floatingActionButton:
-          widget.showBottomBar
-              ? FloatingActionButton(
-                onPressed: () {
-                  print("FAB tapped");
-                },
-                backgroundColor: const Color.fromRGBO(106, 149, 122, 1),
-                child: const Icon(Icons.add, color: Colors.white, size: 28),
-              )
-              : null,
-      floatingActionButtonLocation:
-          widget.showBottomBar
-              ? FloatingActionButtonLocation.centerDocked
-              : null,
+      bottomNavigationBar: widget.showBottomBar
+          ? CustomBottomNavigationBar(
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+            )
+          : null,
+      floatingActionButton: widget.showBottomBar
+          ? FloatingActionButton(
+              onPressed: () {
+                print("FAB tapped");
+              },
+              backgroundColor: const Color.fromRGBO(106, 149, 122, 1),
+              child: const Icon(Icons.add, color: Colors.white, size: 28),
+            )
+          : null,
+      floatingActionButtonLocation: widget.showBottomBar
+          ? FloatingActionButtonLocation.centerDocked
+          : null,
     );
   }
 }

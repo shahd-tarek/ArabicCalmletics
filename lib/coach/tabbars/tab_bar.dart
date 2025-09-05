@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class CustomTabBar extends StatelessWidget {
@@ -18,12 +20,12 @@ class CustomTabBar extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.2),
+            color: const Color.fromRGBO(0, 0, 0, 0.2),
             spreadRadius: 4,
             blurRadius: 10,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -32,9 +34,9 @@ class CustomTabBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildTabButton('Low'),
-            _buildTabButton('Moderate'),
-            _buildTabButton('High'),
+            _buildTabButton('منخفض'),
+            _buildTabButton('متوسط'),
+            _buildTabButton('مرتفع'),
           ],
         ),
       ),

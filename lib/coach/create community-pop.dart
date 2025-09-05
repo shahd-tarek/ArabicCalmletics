@@ -1,13 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+// ignore_for_file: file_names
+
+
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/widgets/custom_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 
 void createCommunityPopDialog(BuildContext context) {
-  List<TextEditingController> textControllers = List.generate(
-    4,
-    (index) => TextEditingController(),
-  );
+  List<TextEditingController> textControllers =
+      List.generate(4, (index) => TextEditingController());
   List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
   showDialog(
@@ -16,7 +19,9 @@ void createCommunityPopDialog(BuildContext context) {
     builder: (BuildContext context) {
       return Dialog(
         backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: LayoutBuilder(
           builder: (context, constraints) {
             double maxHeight = MediaQuery.of(context).size.height * 0.7;
@@ -52,7 +57,7 @@ void createCommunityPopDialog(BuildContext context) {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        "Successfully",
+                        "تم بنجاح",
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -71,16 +76,13 @@ void createCommunityPopDialog(BuildContext context) {
                         children: List.generate(
                           4,
                           (index) => _buildOTPBox(
-                            index,
-                            textControllers,
-                            focusNodes,
-                            context,
+                            index, textControllers, focusNodes, context,
                           ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        "Your code",
+                        "رمزك",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -90,7 +92,10 @@ void createCommunityPopDialog(BuildContext context) {
                       const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,
-                        child: CustomButton(text: "Next", ontap: () {}),
+                        child: CustomButton(
+                          text: "التالي",
+                          ontap: () {},
+                        ),
                       ),
                     ],
                   ),
@@ -104,12 +109,8 @@ void createCommunityPopDialog(BuildContext context) {
   );
 }
 
-Widget _buildOTPBox(
-  int index,
-  List<TextEditingController> textControllers,
-  List<FocusNode> focusNodes,
-  BuildContext context,
-) {
+Widget _buildOTPBox(int index, List<TextEditingController> textControllers,
+    List<FocusNode> focusNodes, BuildContext context) {
   return SizedBox(
     width: 50,
     child: TextField(
@@ -117,7 +118,9 @@ Widget _buildOTPBox(
       focusNode: focusNodes[index],
       keyboardType: TextInputType.number,
       textAlign: TextAlign.center,
-      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+      ],
       style: const TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,

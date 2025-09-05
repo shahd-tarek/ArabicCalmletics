@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:calmleticsarab/coach/payment.dart';
+
+// ignore_for_file: prefer_const_constructors
+
+import 'package:calmleticsarab/coach/screens/payment.dart';
 import 'package:calmleticsarab/widgets/custom_button.dart';
+import 'package:flutter/material.dart';
+
 
 class Vr extends StatelessWidget {
   const Vr({super.key});
@@ -22,36 +26,44 @@ class Vr extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const SizedBox(height: 10),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   const Padding(
                     padding: EdgeInsets.all(24),
                     child: Text(
-                      "set up your vr\n system to start\n creating and\n managing communities",
+                      "قم بإعداد نظام الـ VR الخاص بك لتبدأ في إنشاء وإدارة مجتمعك",
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  Image.asset("assets/images/vr glasses.png"),
-                  const SizedBox(height: 50),
-                  CustomButton(
-                    text: "Start",
-                    ontap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PaymentPage(),
-                        ),
-                      );
-                    },
+                  const SizedBox(
+                    height: 30,
                   ),
-                  const SizedBox(height: 50),
+                  Image.asset(
+                    "assets/images/vr glasses.png",
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  CustomButton(
+                      text: "ابدأ",
+                      ontap: () {
+                        Navigator.push(
+                          context,  
+                          MaterialPageRoute(
+                              builder: (context) =>  PaymentPage()),
+                        );
+                      }),
+                  const SizedBox(
+                    height: 50,
+                  ),
                 ],
               ),
             ),
-          ),
+          )
         ],
       ),
     );

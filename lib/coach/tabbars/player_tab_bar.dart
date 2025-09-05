@@ -33,9 +33,9 @@ class PlayerTabBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildTabButton('all'),
-              _buildTabButton('missed'),
-              _buildTabButton('achievements'),
+              _buildTabButton('الكل'),
+              _buildTabButton('مهمل'),
+              _buildTabButton('إنجاز'),
             ],
           ),
         ),
@@ -44,7 +44,7 @@ class PlayerTabBar extends StatelessWidget {
   }
 
   Widget _buildTabButton(String tabName) {
-    final String selected = selectedTab?.toLowerCase() ?? 'all';
+    final String selected = selectedTab?.toLowerCase() ?? 'الكل';
     final bool isSelected = selected == tabName.toLowerCase();
 
     return GestureDetector(

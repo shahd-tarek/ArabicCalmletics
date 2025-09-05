@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:calmleticsarab/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -13,21 +16,24 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      
-      color: Colors.white,
-      shape: const CircularNotchedRectangle(),
+      color: bgcolor,
+      shape: CircularNotchedRectangle(),
       notchMargin: 6.0,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildNavItem('assets/images/home.png', "Home", 0),
-            const SizedBox(width: 10),
-            _buildNavItem('assets/images/Group.png', "VR Session", 1),
-            const SizedBox(width: 40), 
-            _buildNavItem('assets/images/tabler_play-football.png', "Players", 2),
-            _buildNavItem('assets/images/people.png', "Community",  3),
+            _buildNavItem('assets/images/home.png', " الرئيسية", 0),
+            SizedBox(width: 10),
+            _buildNavItem('assets/images/Group.png', "VR جلسات", 1),
+            SizedBox(width: 40),
+            _buildNavItem(
+              'assets/images/tabler_play-football.png',
+              "اللاعبون",
+              2,
+            ),
+            _buildNavItem('assets/images/people.png', "المجتمع", 3),
           ],
         ),
       ),
@@ -45,15 +51,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
             imagePath,
             width: 24,
             height: 24,
-            color: isSelected ? const Color.fromRGBO(106, 149, 122, 1) : Colors.grey,
+            color: isSelected ? Color.fromRGBO(106, 149, 122, 1) : Colors.grey,
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(
               fontSize: 12,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              color: isSelected ? const Color.fromRGBO(106, 149, 122, 1) : Colors.grey,
+              color: isSelected
+                  ? Color.fromRGBO(106, 149, 122, 1)
+                  : Colors.grey,
             ),
           ),
         ],

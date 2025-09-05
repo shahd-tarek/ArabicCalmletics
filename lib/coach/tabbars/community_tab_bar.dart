@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class CommunityTabBar extends StatelessWidget {
@@ -17,9 +19,9 @@ class CommunityTabBar extends StatelessWidget {
         height: 51,
         width: 300,
         decoration: BoxDecoration(
-          color: const Color.fromRGBO(255, 255, 255, 1),
+          color: Color.fromRGBO(255, 255, 255, 1),
           borderRadius: BorderRadius.circular(30),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.2),
               spreadRadius: 0,
@@ -33,10 +35,10 @@ class CommunityTabBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildTabButton('all'),
-              _buildTabButton('low'),
-              _buildTabButton('moderate'),
-              _buildTabButton('high'),
+              _buildTabButton('الكل'),
+              _buildTabButton('مرتفع'),
+              _buildTabButton('متوسط'),
+              _buildTabButton('منخفض'),
             ],
           ),
         ),
@@ -50,10 +52,10 @@ class CommunityTabBar extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTabSelected(tabName),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
           color: isSelected
-              ? const Color.fromRGBO(106, 149, 122, 1)
+              ? Color.fromRGBO(106, 149, 122, 1)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
         ),
@@ -62,7 +64,7 @@ class CommunityTabBar extends StatelessWidget {
               tabName.substring(1), // Capitalize first letter
           style: TextStyle(
             fontSize: 16,
-            color: isSelected ? Colors.white : const Color.fromRGBO(176, 176, 176, 1),
+            color: isSelected ? Colors.white : Color.fromRGBO(176, 176, 176, 1),
             fontWeight: FontWeight.bold,
           ),
         ),

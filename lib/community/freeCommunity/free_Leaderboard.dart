@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/widgets/leaderboard_item.dart';

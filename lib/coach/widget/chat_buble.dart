@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:calmleticsarab/constant.dart';
+import 'package:flutter/material.dart';
 
 class ChatBubble extends StatelessWidget {
   final String message;
@@ -20,8 +20,7 @@ class ChatBubble extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: Row(
-        mainAxisAlignment:
-            isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           if (!isMe)
@@ -32,8 +31,7 @@ class ChatBubble extends StatelessWidget {
           const SizedBox(width: 8),
           Flexible(
             child: Column(
-              crossAxisAlignment:
-                  isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+              crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -50,10 +48,7 @@ class ChatBubble extends StatelessWidget {
                     maxWidth: MediaQuery.of(context).size.width * 0.7,
                   ),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 14,
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                     decoration: BoxDecoration(
                       color: isMe ? kPrimaryColor : Colors.grey[300],
                       borderRadius: BorderRadius.circular(16),
@@ -71,11 +66,16 @@ class ChatBubble extends StatelessWidget {
               ],
             ),
           ),
-          if (isMe) const SizedBox(width: 8),
           if (isMe)
-            CircleAvatar(backgroundImage: AssetImage(avatar), radius: 20),
+            const SizedBox(width: 8),
+          if (isMe)
+            CircleAvatar(
+              backgroundImage: AssetImage(avatar), 
+              radius: 20,
+            ),
         ],
       ),
     );
   }
 }
+

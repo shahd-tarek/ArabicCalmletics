@@ -58,7 +58,7 @@ class LeaderboardItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "$points points",
+                  "$points نقطه",
                   style: const TextStyle(
                     fontSize: 16,
                     color: Color.fromRGBO(127, 127, 127, 1),
