@@ -1,13 +1,18 @@
-import 'package:flutter/material.dart';
+
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
-import 'package:calmleticsarab/plan/plan_day_task.dart';
 import 'package:calmleticsarab/models/session_model.dart';
+import 'package:calmleticsarab/plan/plan_day_task.dart';
+import 'package:flutter/material.dart';
+
 
 class ChoosePlanPage extends StatelessWidget {
   final String planId;
 
-  const ChoosePlanPage({super.key, required this.planId});
+  const ChoosePlanPage({
+    super.key,
+    required this.planId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +30,9 @@ class ChoosePlanPage extends StatelessWidget {
           }
 
           final data = snapshot.data as Map<String, dynamic>;
-          final sessions =
-              (data['sessions'] as List)
-                  .map((json) => SessionModel.fromJson(json))
-                  .toList();
+          final sessions = (data['sessions'] as List)
+              .map((json) => SessionModel.fromJson(json))
+              .toList();
           final count = data['sessions_count'] as int;
 
           return Column(
@@ -39,18 +43,14 @@ class ChoosePlanPage extends StatelessWidget {
                 child: Row(
                   children: [
                     const Text(
-                      "Total Sessions",
+                      "إجمالي الجلسات",
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(width: 8),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
+                          horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: const Color(0xFFE3ECE7),
                         borderRadius: BorderRadius.circular(12),
@@ -80,15 +80,14 @@ class ChoosePlanPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder:
-                                  (context) => PlanDayTask(
-                                    sessionId: session.sessionId,
-                                    sessionName: session.sessionName,
-                                    sessionNumber: session.sessionNumber,
-                                    status:
-                                        "https://calmletics-production.up.railway.app${session.icon}",
-                                    sessionType: session.sessionTypeInt,
-                                  ),
+                              builder: (context) => PlanDayTask(
+                                sessionId: session.sessionId,
+                                sessionName: session.sessionName,
+                                sessionNumber: session.sessionNumber,
+                                status:
+                                    "https://calmletics-production.up.railway.app${session.icon}",
+                                sessionType: session.sessionTypeInt,
+                              ),
                             ),
                           );
                         },
@@ -106,12 +105,7 @@ class ChoosePlanPage extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(
-                                    top: 24,
-                                    left: 24,
-                                    right: 24,
-                                    bottom: 10,
-                                  ),
+                                padding: const EdgeInsets.only(top: 24,left: 24,right: 24,bottom: 10),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
@@ -123,12 +117,10 @@ class ChoosePlanPage extends StatelessWidget {
                                             "https://calmletics-production.up.railway.app${session.icon}",
                                             width: 24,
                                             height: 24,
-                                            errorBuilder:
-                                                (context, error, stackTrace) =>
-                                                    const Icon(
-                                                      Icons.broken_image,
-                                                      size: 24,
-                                                    ),
+                                            errorBuilder: (context, error,
+                                                    stackTrace) =>
+                                                const Icon(Icons.broken_image,
+                                                    size: 24),
                                           ),
                                           const SizedBox(width: 6),
                                           Text(
@@ -144,10 +136,10 @@ class ChoosePlanPage extends StatelessWidget {
                                       const SizedBox(height: 8),
                                       Text(
                                         session.sessionName,
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          color: textcolor,
+                                        style: const TextStyle(fontSize: 18,
+                                         color: textcolor,
                                         ),
+                                        
                                       ),
                                     ],
                                   ),
@@ -159,7 +151,7 @@ class ChoosePlanPage extends StatelessWidget {
                                   bottomRight: Radius.circular(16),
                                 ),
                                 child: Image.asset(
-                                  'assets/images/freepik--background-complete--inject-64 1.png',
+                                   'assets/images/freepik--background-complete--inject-64 1.png',
                                   width: 150,
                                   height: double.infinity,
                                   fit: BoxFit.cover,

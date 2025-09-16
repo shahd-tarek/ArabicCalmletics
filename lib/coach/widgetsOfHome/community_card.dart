@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
 
 class CommunityCard extends StatelessWidget {
@@ -9,14 +11,14 @@ class CommunityCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const CommunityCard({
-    super.key,
+    Key? key,
     required this.title,
     required this.level,
     required this.players,
     required this.date,
     required this.cardWidth,
     this.onTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +27,11 @@ class CommunityCard extends StatelessWidget {
     late final Color textColor;
 
     switch (level.toLowerCase()) {
-      case 'low':
+      case 'منخفض':
         backgroundColor = const Color.fromRGBO(239, 255, 206, 1);
         textColor = const Color.fromRGBO(153, 194, 70, 1);
         break;
-      case 'moderate':
+      case 'متوسط':
         backgroundColor = const Color.fromRGBO(254, 251, 226, 1);
         textColor = const Color.fromRGBO(212, 193, 17, 1);
         break;
@@ -106,7 +108,7 @@ class CommunityCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      'Total Players: $players',
+                      ' كل اللاعبون: $players',
                       style: const TextStyle(
                         fontSize: 14,
                         color: Color.fromRGBO(66, 66, 66, 0.5),

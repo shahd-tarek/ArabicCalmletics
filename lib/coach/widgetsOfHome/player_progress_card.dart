@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
 
 class PlayerProgressCard extends StatelessWidget {
@@ -8,13 +10,13 @@ class PlayerProgressCard extends StatelessWidget {
   final String imageUrl;
 
   const PlayerProgressCard({
-    super.key,
+    Key? key,
     required this.playerName,
     required this.communityName,
     required this.statusMessage,
     required this.imageUrl,
     this.playerImage,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

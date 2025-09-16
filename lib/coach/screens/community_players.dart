@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: avoid_print
+
+
 import 'package:calmleticsarab/coach/tabbars/player_tab_bar.dart';
 import 'package:calmleticsarab/coach/widgetsOfHome/player_progress_card.dart';
 import 'package:calmleticsarab/http/api.dart';
+import 'package:flutter/material.dart';
+
 
 class CommPlayers extends StatefulWidget {
   final bool showBottomBar;
@@ -36,7 +40,7 @@ class _CommPlayersState extends State<CommPlayers> {
     try {
       final fetchedPlayers = await Api.fetchCommunityFilterplayer(
         widget.communityId,
-        status ?? 'all',
+        status ?? 'الكل',
       );
 
       setState(() {
@@ -77,7 +81,7 @@ class _CommPlayersState extends State<CommPlayers> {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: "Search",
+                      hintText: "البحث",
                       prefixIcon: const Icon(Icons.search, color: Colors.grey),
                       filled: true,
                       fillColor: Colors.white,
@@ -91,7 +95,7 @@ class _CommPlayersState extends State<CommPlayers> {
             ),
             const SizedBox(height: 20),
             PlayerTabBar(
-              selectedTab: status ?? 'all',
+              selectedTab: status ?? 'الكل',
               onTabSelected: (tab) {
                 setState(() {
                   status = tab;
@@ -101,7 +105,7 @@ class _CommPlayersState extends State<CommPlayers> {
             ),
             const SizedBox(height: 16),
             const Text(
-              "Players",
+              "اللاعبون",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -110,29 +114,27 @@ class _CommPlayersState extends State<CommPlayers> {
             ),
             const SizedBox(height: 16),
             Expanded(
-              child:
-                  isLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : players.isEmpty
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : players.isEmpty
                       ? const Center(child: Text("No players found"))
                       : ListView.builder(
-                        itemCount: players.length,
-                        itemBuilder: (context, index) {
-                          final player = players[index];
-                          return PlayerProgressCard(
-                            playerName: player['player_name'] ?? 'Unknown',
-                            communityName:
-                                player['community_name'] ?? 'Unknown',
-                            statusMessage:
-                                player['status_message'] ?? 'No status',
-                            playerImage: player['image'],
-                            imageUrl:
-                                player['status_image'] != null
-                                    ? '$baseUrl${player['status_image']}'
-                                    : '',
-                          );
-                        },
-                      ),
+                          itemCount: players.length,
+                          itemBuilder: (context, index) {
+                            final player = players[index];
+                            return PlayerProgressCard(
+                              playerName: player['player_name'] ?? 'Unknown',
+                              communityName:
+                                  player['community_name'] ?? 'Unknown',
+                              statusMessage:
+                                  player['status_message'] ?? 'No status',
+                              playerImage: player['image'],
+                              imageUrl: player['status_image'] != null
+                                  ? '$baseUrl${player['status_image']}'
+                                  : '',
+                            );
+                          },
+                        ),
             ),
           ],
         ),

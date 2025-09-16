@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:calmleticsarab/coach/coach_avatar.dart';
 import 'package:calmleticsarab/constant.dart';

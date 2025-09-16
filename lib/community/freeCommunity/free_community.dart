@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:calmleticsarab/community/coachCommunity/community-pop-code.dart';
 import 'package:calmleticsarab/community/freeCommunity/chat.dart';

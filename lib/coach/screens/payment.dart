@@ -1,8 +1,13 @@
-import 'package:flutter/material.dart';
+
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:calmleticsarab/coach/screens/coach_home.dart';
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/widgets/custom_button.dart';
+import 'package:flutter/material.dart';
+
+
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -19,36 +24,38 @@ class _PaymentPageState extends State<PaymentPage> {
 
   bool isLoading = false;
 
-  Future<void> saveCard() async {
-    setState(() {
-      isLoading = true;
-    });
+ Future<void> saveCard() async {
+  setState(() {
+    isLoading = true;
+  });
 
-    bool success = await Api().saveCard(
-      nameController.text,
-      numberController.text,
-      dateController.text,
-      cvvController.text,
+  bool success = await Api().saveCard(
+    nameController.text,
+    numberController.text,
+    dateController.text,
+    cvvController.text,
+  );
+
+  if (success) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Card saved successfully!")),
+                        
     );
-
-    if (success) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Card saved successfully!")));
       Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const CoachHome()),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Failed to save card. Please try again.")),
-      );
-    }
-
-    setState(() {
-      isLoading = false;
-    });
+    context,
+    MaterialPageRoute(builder: (context) => const CoachHome()), 
+  );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Failed to save card. Please try again.")),
+    );
   }
+
+  setState(() {
+    isLoading = false;
+  });
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +72,12 @@ class _PaymentPageState extends State<PaymentPage> {
           Column(
             children: [
               const SizedBox(height: 50),
-              Center(child: Image.asset('assets/images/visa.png', width: 600)),
+              Center(
+                child: Image.asset(
+                  'assets/images/visa.png',
+                  width: 600,
+                ),
+              ),
               Expanded(
                 child: Container(
                   width: double.infinity,
@@ -87,28 +99,26 @@ class _PaymentPageState extends State<PaymentPage> {
                         TextField(
                           controller: nameController,
                           decoration: const InputDecoration(
-                            labelText: 'Cardholder Name',
+                            labelText: 'اسم صاحب البطاقة',
                             labelStyle: TextStyle(color: Colors.grey),
                             border: UnderlineInputBorder(),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: kPrimaryColor,
-                                width: 2.0,
-                              ),
+                                  color: kPrimaryColor,
+                                  width: 2.0), 
                             ),
                           ),
                         ),
                         TextField(
                           controller: numberController,
                           decoration: const InputDecoration(
-                            labelText: 'Card number',
+                            labelText: 'رقم البطاقة',
                             labelStyle: TextStyle(color: Colors.grey),
                             border: UnderlineInputBorder(),
-                            focusedBorder: UnderlineInputBorder(
+                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: kPrimaryColor,
-                                width: 2.0,
-                              ),
+                                  color: kPrimaryColor,
+                                  width: 2.0), 
                             ),
                           ),
                           keyboardType: TextInputType.number,
@@ -120,15 +130,14 @@ class _PaymentPageState extends State<PaymentPage> {
                               child: TextField(
                                 controller: dateController,
                                 decoration: const InputDecoration(
-                                  labelText: 'Expire Date',
+                                  labelText: 'تاريخ الانتهاء',
                                   labelStyle: TextStyle(color: Colors.grey),
                                   border: UnderlineInputBorder(),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: kPrimaryColor,
-                                      width: 2.0,
-                                    ),
-                                  ),
+                             focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: kPrimaryColor,
+                                  width: 2.0), 
+                            ),
                                 ),
                                 keyboardType: TextInputType.datetime,
                               ),
@@ -138,15 +147,14 @@ class _PaymentPageState extends State<PaymentPage> {
                               child: TextField(
                                 controller: cvvController,
                                 decoration: const InputDecoration(
-                                  labelText: 'CVV',
+                                  labelText: 'رمز التحقق (CVV)',
                                   labelStyle: TextStyle(color: Colors.grey),
-                                  border: UnderlineInputBorder(),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: kPrimaryColor,
-                                      width: 2.0,
-                                    ),
-                                  ),
+                                   border: UnderlineInputBorder(),
+                             focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: kPrimaryColor,
+                                  width: 2.0), 
+                            ),
                                 ),
                                 keyboardType: TextInputType.number,
                                 obscureText: true,
@@ -157,14 +165,15 @@ class _PaymentPageState extends State<PaymentPage> {
                         const SizedBox(height: 50),
                         isLoading
                             ? const Center(child: CircularProgressIndicator())
-                            : CustomButton(text: "Pay", ontap: saveCard),
+                            : CustomButton(
+                                text: "ادفع",
+                                ontap: saveCard,
+                              ),
                         const SizedBox(height: 220),
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 10,
-                          ),
+                              vertical: 10, horizontal: 10),
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
@@ -182,18 +191,14 @@ class _PaymentPageState extends State<PaymentPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.asset(
-                                'assets/images/visaicon.png',
-                                width: 110,
-                              ),
+                              Image.asset('assets/images/visaicon.png',
+                                  width: 110),
                               Image.asset(
                                 'assets/images/PayPal.png',
                                 width: 110,
                               ),
-                              Image.asset(
-                                'assets/images/MasterCard.png',
-                                width: 110,
-                              ),
+                              Image.asset('assets/images/MasterCard.png',
+                                  width: 110),
                             ],
                           ),
                         ),

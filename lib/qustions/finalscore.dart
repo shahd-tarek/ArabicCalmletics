@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';

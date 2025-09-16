@@ -249,7 +249,6 @@ class _SessionTab extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Navigate to phone test
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
