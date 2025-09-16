@@ -20,6 +20,7 @@ class VRScheduleScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(10),
             child: TableCalendar(
+              locale: 'ar',
               firstDay: DateTime.utc(2020, 1, 1),
               lastDay: DateTime.utc(2030, 12, 31),
               focusedDay: DateTime.now(),

@@ -1,8 +1,6 @@
-import 'package:calmleticsarab/community/freeCommunity/free_community.dart';
-import 'package:calmleticsarab/progress.dart';
+import 'package:calmleticsarab/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:calmleticsarab/views/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
         return Directionality(textDirection: TextDirection.rtl, child: child!);
       },
 
-      home: const ProgressPage(),
+      home: const SplashScreen(),
     );
   }
 }
