@@ -11,7 +11,7 @@ import 'package:calmleticsarab/widgets/custom_button.dart';
 class BookVRSessionPage extends StatefulWidget {
   final int sessionId;
 
-  const BookVRSessionPage({super.key, required this.sessionId});
+  const BookVRSessionPage({super.key,required this.sessionId});
 
   @override
   _BookVRSessionPageState createState() => _BookVRSessionPageState();
@@ -22,13 +22,13 @@ class _BookVRSessionPageState extends State<BookVRSessionPage> {
   DateTime? _selectedDay;
   int? selectedTimeSlotIndex;
 
-  final List<String> timeSlots = [
-    "10:00 AM - 11:00 AM",
-    "11:00 AM - 12:00 PM",
-    "12:00 PM - 1:00 PM",
-    "1:00 PM - 2:00 PM",
-    "2:00 PM - 3:00 PM",
-  ];
+final List<String> timeSlots = [
+  "١٠:٠٠ ص - ١١:٠٠ ص",
+  "١١:٠٠ ص - ١٢:٠٠ م",
+  "١٢:٠٠ م - ١:٠٠ م",
+  "١:٠٠ م - ٢:٠٠ م",
+  "٢:٠٠ م - ٣:٠٠ م",
+];
 
   Future<void> bookSession() async {
     if (_selectedDay == null || selectedTimeSlotIndex == null) {
@@ -121,6 +121,7 @@ class _BookVRSessionPageState extends State<BookVRSessionPage> {
             const SizedBox(height: 10),
 
             TableCalendar(
+               locale: 'ar',
               focusedDay: _focusedDay,
               firstDay: DateTime.now(),
               lastDay: DateTime(2100, 12, 31),
@@ -172,7 +173,7 @@ class _BookVRSessionPageState extends State<BookVRSessionPage> {
                       ),
                       child: Text(
                         timeSlots[index],
-                        style: const TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 20),
                       ),
                     ),
                   );

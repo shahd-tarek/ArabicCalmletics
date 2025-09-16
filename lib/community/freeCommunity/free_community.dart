@@ -49,7 +49,7 @@ class freeCommunityState extends State<freeCommunity> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: padding * 2), // 30 -> نسبي
+              SizedBox(height: padding * 3), // 30 -> نسبي
               // Profile & Points Section
               Row(
                 children: [

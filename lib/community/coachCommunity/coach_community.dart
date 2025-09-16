@@ -68,7 +68,7 @@ class coachCommunityState extends State<coachCommunity> {
                       const Row(
                         children: [
                           Text(
-                            "240",
+                            "0",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -167,17 +167,8 @@ class coachCommunityState extends State<coachCommunity> {
                   fontSize: 16,
                 ),
               ),
-              const SizedBox(height: 20),
-              buildOptionCard(
-                "Step Into Virtual Reality for Peak\nPerformance!",
-                () {
-                  /*  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const BookVRSessionPage()),
-                );*/
-                },
-              ),
-              const SizedBox(height: 20),
+
+        /*      const SizedBox(height: 20),
               const Text(
                 "إليك دائرة دعمك",
                 style: TextStyle(
@@ -200,7 +191,7 @@ class coachCommunityState extends State<coachCommunity> {
                     );
                   }),
                 ),
-              ),
+              ),*/
             ],
           ),
         ),

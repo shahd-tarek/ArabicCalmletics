@@ -20,12 +20,20 @@ class _ProgressPageState extends State<ProgressPage>
   late Future<ProgressData> progressFuture;
 
   List<Map<String, dynamic>> weekEmotions = [
-    {"day": "Mon", "date": "17", "emotion": "assets/images/very_anxious.png"},
-    {"day": "Tue", "date": "18", "emotion": "assets/images/anxious.png"},
-    {"day": "Wed", "date": "19", "emotion": "assets/images/tense.png"},
-    {"day": "Thu", "date": "20", "emotion": "assets/images/neutral.png"},
-    {"day": "Fri", "date": "21", "emotion": "assets/images/slightly_calm.png"},
-    {"day": "Sat", "date": "22", "emotion": "assets/images/calm.png"},
+    {
+      "day": "الاثنين",
+      "date": "17",
+      "emotion": "assets/images/very_anxious.png"
+    },
+    {"day": "الثلاثاء", "date": "18", "emotion": "assets/images/anxious.png"},
+    {"day": "الأربعاء", "date": "19", "emotion": "assets/images/tense.png"},
+    {"day": "الخميس", "date": "20", "emotion": "assets/images/neutral.png"},
+    {
+      "day": "الجمعة",
+      "date": "21",
+      "emotion": "assets/images/slightly_calm.png"
+    },
+    {"day": "السبت", "date": "22", "emotion": "assets/images/calm.png"},
   ];
 
   late AnimationController _animationController;
@@ -120,13 +128,13 @@ class _ProgressPageState extends State<ProgressPage>
                 series: <CartesianSeries>[
                   SplineAreaSeries<ChartData, String>(
                     dataSource: [
-                      ChartData('4 April', 3),
-                      ChartData('5 April', 2),
-                      ChartData('6 April', 2.5),
-                      ChartData('7 April', 4),
-                      ChartData('8 April', 3),
-                      ChartData('9 April', 3.5),
-                      ChartData('Today', 4.5),
+                      ChartData('٤ أبريل', 3),
+                      ChartData('٥ أبريل', 2),
+                      ChartData('٦ أبريل', 2.5),
+                      ChartData('٧ أبريل', 4),
+                      ChartData('٨ أبريل', 3),
+                      ChartData('٩ أبريل', 3.5),
+                      ChartData('اليوم', 4.5),
                     ],
                     xValueMapper: (ChartData data, _) => data.x,
                     yValueMapper: (ChartData data, _) => data.y,
@@ -158,8 +166,8 @@ class _ProgressPageState extends State<ProgressPage>
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: weekEmotions.length,
-                separatorBuilder:
-                    (context, index) => SizedBox(width: padding * 0.6),
+                separatorBuilder: (context, index) =>
+                    SizedBox(width: padding * 0.6),
                 itemBuilder: (context, index) {
                   bool isSelected = index == 1; // simulate "today"
                   return Column(
@@ -174,10 +182,9 @@ class _ProgressPageState extends State<ProgressPage>
                           color: isSelected ? kPrimaryColor : Colors.white,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color:
-                                isSelected
-                                    ? kPrimaryColor
-                                    : Colors.grey.shade300,
+                            color: isSelected
+                                ? kPrimaryColor
+                                : Colors.grey.shade300,
                           ),
                         ),
                         child: Column(
