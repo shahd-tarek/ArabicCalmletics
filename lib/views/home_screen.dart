@@ -92,17 +92,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    child:
-                        profileImage == null || profileImage!.isEmpty
-                            ? const CircularProgressIndicator()
-                            : CircleAvatar(
-                              radius: screenWidth * 0.07,
-                              backgroundImage: AssetImage(profileImage!),
-                              onBackgroundImageError:
-                                  (_, __) => setState(() {
-                                    profileImage = null;
-                                  }),
-                            ),
+                    child: profileImage == null || profileImage!.isEmpty
+                        ? const CircularProgressIndicator()
+                        : CircleAvatar(
+                            radius: screenWidth * 0.07,
+                            backgroundImage: AssetImage(profileImage!),
+                            onBackgroundImageError: (_, __) => setState(() {
+                              profileImage = null;
+                            }),
+                          ),
                   ),
                   IconButton(
                     icon: Icon(
@@ -133,6 +131,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       description:
                           'هل تشعر بالقلق؟ خذ هذا الاختبار لتعرف حالتك.',
                       image: 'assets/images/card1.png',
+                      navigateTo: const SurveyScoreScreen(),
+                    ),
+                    SizedBox(height: cardSpacing),
+                    buildCard(
+                      context: context,
+                      title: 'اختبار اليقظة',
+                      description: "قيّم مدى وعيك وتركيزك في اللحظة الحالية.",
+                      image: 'assets/images/card22.png',
+                      navigateTo: const SurveyScoreScreen(),
+                    ),
+                    SizedBox(height: cardSpacing),
+
+                    buildCard(
+                      context: context,
+                      title: "اختبار الثقة بالنفس",
+                      description: 'اكتشف مستوى ثقتك بنفسك اليوم.',
+                      image: 'assets/images/card33.png',
                       navigateTo: const SurveyScoreScreen(),
                     ),
                     SizedBox(height: cardSpacing),
