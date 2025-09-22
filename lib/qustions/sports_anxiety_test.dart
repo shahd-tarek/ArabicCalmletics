@@ -454,17 +454,16 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
             child: ElevatedButton(
               onPressed: areAllQuestionsAnswered(pageIndex) ? nextPage : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    areAllQuestionsAnswered(pageIndex)
-                        ? kPrimaryColor
-                        : Colors.green.withOpacity(0.5),
+                backgroundColor: areAllQuestionsAnswered(pageIndex)
+                    ? kPrimaryColor
+                    : Colors.green.withOpacity(0.5),
                 minimumSize: Size(double.infinity, buttonHeight),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
               child: Text(
-                'Complete',
+                'التالي',
                 style: TextStyle(
                   fontSize: screenWidth * 0.045,
                   color: Colors.white,
@@ -526,10 +525,9 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            isSelected
-                                ? const Color.fromRGBO(215, 244, 212, 1)
-                                : Colors.white,
+                        backgroundColor: isSelected
+                            ? const Color.fromRGBO(215, 244, 212, 1)
+                            : Colors.white,
                         foregroundColor:
                             isSelected ? Colors.black : Colors.grey,
                         minimumSize: Size(double.infinity, buttonHeight),

@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:calmleticsarab/qustions/mindfulness_scale.dart';
+import 'package:calmleticsarab/qustions/self_confidence_test.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:calmleticsarab/calm_routine/quick_t1.dart';
@@ -8,7 +10,7 @@ import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/models/progress_data.dart';
 import 'package:calmleticsarab/views/user_profile.dart';
 import 'package:calmleticsarab/widgets/card.dart';
-import 'package:calmleticsarab/qustions/surveyscore.dart';
+import 'package:calmleticsarab/qustions/sports_anxiety_test.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -139,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: 'اختبار اليقظة',
                       description: "قيّم مدى وعيك وتركيزك في اللحظة الحالية.",
                       image: 'assets/images/card22.png',
-                      navigateTo: const SurveyScoreScreen(),
+                      navigateTo: const MindfulnesScale(),
                     ),
                     SizedBox(height: cardSpacing),
 
@@ -148,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: "اختبار الثقة بالنفس",
                       description: 'اكتشف مستوى ثقتك بنفسك اليوم.',
                       image: 'assets/images/card33.png',
-                      navigateTo: const SurveyScoreScreen(),
+                      navigateTo: const SelfConfidenceTest(),
                     ),
                     SizedBox(height: cardSpacing),
 

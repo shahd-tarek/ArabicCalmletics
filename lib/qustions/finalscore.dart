@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/qustions/recommend_plan.dart';
-import 'package:calmleticsarab/qustions/surveyscore.dart';
+import 'package:calmleticsarab/qustions/sports_anxiety_test.dart';
 import 'package:calmleticsarab/views/main_screen.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
