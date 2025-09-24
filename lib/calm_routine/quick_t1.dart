@@ -63,7 +63,6 @@ class _QuickTaskOneState extends State<QuickTaskOne> {
     final double fontSizeMedium = size.width * 0.042;
     final double fontSizeLarge = size.width * 0.05;
     final double cardHeight = size.height * 0.5; // ارتفاع الكارد نسبي
-    final double progressBarWidth = size.width * 0.7;
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 243, 240, 240),
@@ -95,15 +94,15 @@ class _QuickTaskOneState extends State<QuickTaskOne> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // شريط التقدم
+                    // Progress bar
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: SizedBox(
-                            height: size.width * 0.08,
-                            width: progressBarWidth,
+                            height: 20,
+                            width: 250,
                             child: LinearProgressIndicator(
                               value: (widget.pageIndex + 1) / widget.totalPages,
                               backgroundColor: Colors.grey[300],
@@ -113,11 +112,11 @@ class _QuickTaskOneState extends State<QuickTaskOne> {
                             ),
                           ),
                         ),
-                        SizedBox(width: padding * 0.8),
+                        const SizedBox(width: 12),
                         Text(
                           '${widget.pageIndex + 1}/${widget.totalPages}',
-                          style: TextStyle(
-                            fontSize: fontSizeMedium,
+                          style: const TextStyle(
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: kPrimaryColor,
                           ),
@@ -185,8 +184,7 @@ class _QuickTaskOneState extends State<QuickTaskOne> {
                                       LayoutBuilder(
                                         builder: (context, constraints) {
                                           return SizedBox(
-                                            width:
-                                                constraints.maxWidth *
+                                            width: constraints.maxWidth *
                                                 0.8, // 80% من العرض المتاح
                                             child: Wrap(
                                               alignment: WrapAlignment.center,
@@ -238,10 +236,9 @@ class _QuickTaskOneState extends State<QuickTaskOne> {
                             height: 10,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color:
-                                  currentIndex == index
-                                      ? kPrimaryColor
-                                      : Colors.grey.shade300,
+                              color: currentIndex == index
+                                  ? kPrimaryColor
+                                  : Colors.grey.shade300,
                             ),
                           );
                         }),
@@ -266,11 +263,10 @@ class _QuickTaskOneState extends State<QuickTaskOne> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder:
-                            (context) => BoxBreathingScreen(
-                              pageIndex: widget.pageIndex + 1,
-                              totalPages: widget.totalPages,
-                            ),
+                        builder: (context) => BoxBreathingScreen(
+                          pageIndex: widget.pageIndex + 1,
+                          totalPages: widget.totalPages,
+                        ),
                       ),
                     );
                   },

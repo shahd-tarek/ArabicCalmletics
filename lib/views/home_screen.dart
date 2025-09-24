@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       description:
                           'هل تشعر بالقلق؟ خذ هذا الاختبار لتعرف حالتك.',
                       image: 'assets/images/card1.png',
-                      navigateTo: const SurveyScoreScreen(),
+                      navigateTo: const SportsAnxietyTest(),
                     ),
                     SizedBox(height: cardSpacing),
                     buildCard(

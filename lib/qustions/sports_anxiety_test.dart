@@ -5,14 +5,14 @@ import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/qustions/finalscore.dart';
 
-class SurveyScoreScreen extends StatefulWidget {
-  const SurveyScoreScreen({super.key});
+class SportsAnxietyTest extends StatefulWidget {
+  const SportsAnxietyTest({super.key});
 
   @override
-  _SurveyScoreScreenState createState() => _SurveyScoreScreenState();
+  _SportsAnxietyTestState createState() => _SportsAnxietyTestState();
 }
 
-class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
+class _SportsAnxietyTestState extends State<SportsAnxietyTest> {
   Map<int, int> questionScores = {};
   int currentPage = 0;
   final PageController _pageController = PageController();
@@ -22,13 +22,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
       'questions': [
         {
           'question':
-              'I am worried I might not perform as well as I can in my next match',
+              'أنا قلق من أنني قد لا أؤدي بشكل جيد اليوم  كما  كنت أستطيع من  قبل',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -36,13 +36,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question': 'My body feels tense as I think about the game',
+          'question': 'أشعر أن جسمي متوتر',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -50,13 +50,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question': 'I feel confident about my ability to perform.',
+          'question': 'أشعر بالثقة بالنفس',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -64,13 +64,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question': 'I feel calm and secure about my preparation',
+          'question': 'أشعر بالتوتر في معدتي',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -78,28 +78,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question':
-              'I believe I can handle the challenges of the upcoming match.',
+          'question': 'أشعر بالأمان',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
-          },
-        },
-      ],
-    },
-    {
-      'questions': [
-        {
-          'question': 'I am worried I might perform poorly in my next match.',
-          'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -108,13 +93,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
       'questions': [
         {
           'question':
-              'My heart beats faster when I think about the competition.',
+              'أنا واثق من أنني سأتمكن من مواجهة تحديات اليوم وأؤدي بشكل جيد',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -122,13 +107,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question': 'I am confident I can perform at my best.',
+          'question': 'أنا قلق من أنني قد أؤدي بشكل سيئ اليوم',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -136,13 +121,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question': 'I am worried about reaching my sports goal.',
+          'question': 'قلبي ينبض بسرعة',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -150,13 +135,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question': 'My stomach feels heavy when I think about the match.',
+          'question': 'أنا واثق من أنني سأؤدي بشكل جيد اليوم',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -164,14 +149,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question':
-              'I am worried that others might be disappointed with how I play.',
+          'question': 'أنا قلق بشأن تحقيق هدفي في الرياضة',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -179,29 +163,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
     {
       'questions': [
         {
-          'question':
-              'I feel confident because I can imagine myself achieving my goal.',
+          'question': 'أشعر بتقلص أو مغص في معدتي',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
-          },
-        },
-      ],
-    },
-    {
-      'questions': [
-        {
-          'question':
-              'I am worried I might not be able to stay focused during the match.',
-          'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -210,13 +178,13 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
       'questions': [
         {
           'question':
-              'My muscles feel tight when I think about the competition.',
+              'أشعر بالقلق من عدم رضا الآخرين عن أدائي  في مباراة اليوم',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -225,13 +193,41 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
       'questions': [
         {
           'question':
-              'I feel some discomfort in my stomach thinking about the match',
+              'أشعر بالثقة في نفسي لأني وضعت لنفسي صورة في عقلي بأني سوف أحقق أهدافي اليوم في المبارة',
           'options': {
-            'Not at all': 1,
-            'Somewhat': 2,
-            'Neutral/ Uncertain': 3,
-            'Moderate': 4,
-            'Very much': 5,
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
+          },
+        },
+      ],
+    },
+    {
+      'questions': [
+        {
+          'question': 'أنا قلق بشأن عدم القدرة على التركيز اليوم',
+          'options': {
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
+          },
+        },
+      ],
+    },
+    {
+      'questions': [
+        {
+          'question': 'أشعر أن جسدي مشدود',
+          'options': {
+            'لا على الإطلاق': 1,
+            'إلى حد ما': 2,
+            'محايد/ غير متأكد': 3,
+            'معتدل': 4,
+            'إلى حد كبير جدا': 5,
           },
         },
       ],
@@ -382,7 +378,7 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
                   SizedBox(height: screenHeight * 0.02),
                   Center(
                     child: Text(
-                      "Sport Anxiety Test",
+                      "اختبار القلق الرياضي",
                       style: TextStyle(
                         fontSize: screenWidth * 0.055,
                         fontWeight: FontWeight.bold,
@@ -542,7 +538,7 @@ class _SurveyScoreScreenState extends State<SurveyScoreScreen> {
                         ),
                       ),
                       child: Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.centerRight,
                         child: Text(
                           optionText,
                           style: TextStyle(fontSize: fontSizeOption),

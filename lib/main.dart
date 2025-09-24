@@ -1,4 +1,4 @@
-import 'package:calmleticsarab/views/splash_screen.dart';
+import 'package:calmleticsarab/qustions/sports_anxiety_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         return Directionality(textDirection: TextDirection.rtl, child: child!);
       },
 
-      home: const SplashScreen(),
+      home:  const SportsAnxietyTest(),
     );
   }
 }

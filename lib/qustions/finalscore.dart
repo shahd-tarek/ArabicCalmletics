@@ -349,7 +349,7 @@ class _AnxietyScreenState extends State<AnxietyScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SurveyScoreScreen(),
+                    builder: (context) => const SportsAnxietyTest(),
                   ),
                 );
               },

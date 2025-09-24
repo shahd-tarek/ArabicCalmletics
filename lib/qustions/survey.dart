@@ -187,25 +187,23 @@ class _SurveyScreenState extends State<SurveyScreen> {
           padding: const EdgeInsets.all(16.0),
           color: const Color.fromRGBO(255, 255, 255, 1),
           child: ElevatedButton(
-            onPressed:
-                areAllQuestionsAnswered(pageIndex)
-                    ? () async {
-                      if (pageIndex == surveyData.length - 1) {
-                        await submitSurveyAnswers();
-                      } else {
-                        nextPage();
-                      }
+            onPressed: areAllQuestionsAnswered(pageIndex)
+                ? () async {
+                    if (pageIndex == surveyData.length - 1) {
+                      await submitSurveyAnswers();
+                    } else {
+                      nextPage();
                     }
-                    : null,
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  areAllQuestionsAnswered(pageIndex)
-                      ? kPrimaryColor
-                      : const Color.fromRGBO(106, 149, 122, 0.5),
+              backgroundColor: areAllQuestionsAnswered(pageIndex)
+                  ? kPrimaryColor
+                  : const Color.fromRGBO(106, 149, 122, 0.5),
               minimumSize: const Size(double.infinity, 50),
             ),
             child: Text(
-              pageIndex == surveyData.length - 1 ? 'Submit' : 'Next',
+              pageIndex == surveyData.length - 1 ? 'إرسال' : 'التالي',
               style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
@@ -239,48 +237,43 @@ class _SurveyScreenState extends State<SurveyScreen> {
                 ),
                 const SizedBox(height: 12),
                 Column(
-                  children:
-                      question['options'].map<Widget>((option) {
-                        bool isSelected =
-                            questionAnswers[question['id']] == option;
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 6),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                questionAnswers[question['id']] = option;
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  isSelected
-                                      ? const Color.fromRGBO(215, 244, 212, 1)
-                                      : const Color.fromRGBO(255, 255, 255, 1),
-                              foregroundColor:
-                                  isSelected ? Colors.black : Colors.grey,
-                              minimumSize: const Size(double.infinity, 50),
-                              elevation: isSelected ? 2 : 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                side: BorderSide(
-                                  color:
-                                      isSelected
-                                          ? Colors.transparent
-                                          : Colors.grey,
-                                  width: 1,
-                                ),
-                              ),
-                            ),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                option,
-                                style: const TextStyle(fontSize: 16),
-                              ),
+                  children: question['options'].map<Widget>((option) {
+                    bool isSelected = questionAnswers[question['id']] == option;
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            questionAnswers[question['id']] = option;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: isSelected
+                              ? const Color.fromRGBO(215, 244, 212, 1)
+                              : const Color.fromRGBO(255, 255, 255, 1),
+                          foregroundColor:
+                              isSelected ? Colors.black : Colors.grey,
+                          minimumSize: const Size(double.infinity, 50),
+                          elevation: isSelected ? 2 : 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(
+                              color:
+                                  isSelected ? Colors.transparent : Colors.grey,
+                              width: 1,
                             ),
                           ),
-                        );
-                      }).toList(),
+                        ),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            option,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
               ],
             ),
@@ -293,131 +286,134 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
 final List<Map<String, dynamic>> surveyData = [
   {
-    'title': 'Tell us about yourself',
+    'title': 'احكيلنا عن نفسك',
     'questions': [
       {
         'id': 1,
-        'question': 'Gender',
-        'options': ["Male", "Female"],
+        'question': 'النوع',
+        'options': ["ذكر", "أنثى"],
       },
       {
         'id': 2,
-        'question': 'What is your age?',
-        'options': ['Under 18', '18-24', '25-34'],
+        'question': 'ما هو عمرك؟',
+        'options': ['أقل من 18', '18-24', '25-34'],
       },
       {
         'id': 3,
-        'question': 'What is your current situation?',
-        'options': ['Working', 'Studying', 'Not currently working'],
+        'question': 'ما هو وضعك الحالي؟',
+        'options': ['أعمل', 'أدرس', 'لا أعمل في الوقت الحالي'],
       },
     ],
   },
   {
-    'title': 'Your Sports Journey & Anxiety',
+    'title': 'رحلتك الرياضية وقلقك',
     'questions': [
       {
         'id': 4,
-        'question': 'How many years have you been practicing sports?',
+        'question': 'كم عدد سنوات الممارسة الرياضية لديك؟',
         'options': [
-          'Less than a year',
-          '1-3 years',
-          '4-6 years',
-          'More than 6 years',
+          'أقل من سنة',
+          'من 1 إلى 3 سنوات',
+          'من 4 إلى 6 سنوات',
+          'أكثر من 6 سنوات',
         ],
       },
       {
         'id': 5,
-        'question': 'How often do you feel anxious in\na week?',
-        'options': ['Rarely', 'Sometimes', 'Often', 'Always'],
+        'question': 'كم مرة تشعر بالقلق في الأسبوع؟',
+        'options': ['نادرا', 'أحيانا', 'كثيرا', 'دائما'],
       },
       {
         'id': 6,
-        'question': "What's your competition level?",
+        'question': "ما هي درجة المنافسة التي تشارك فيها؟",
         'options': [
-          'Excellent',
-          'First degree',
-          'Second degree',
-          'Third degree',
+          'ممتاز',
+          'درجة أولي',
+          'درجة تانية',
+          'درجة تالتة',
           'Not specified',
         ],
       },
       {
         'id': 7,
-        'question': 'I feel anxious.',
+        'question': 'أشعر بالقلق',
         'options': [
-          'In the morning',
-          'In the evening',
-          'Before important events',
-          'Randomly',
+          'في الصباح',
+          'في المساء',
+          'قبل الأحداث المهمة ',
+          'بشكل عشوائي',
         ],
       },
     ],
   },
   {
-    'title': 'How You Handle Anxiety',
+    'title': 'كيف تتعامل مع القلق',
     'questions': [
       {
         'id': 8,
-        'question':
-            'Which of the following do you\nprefer for treating anxiety?',
+        'question': 'أيهما تفضل لعلاج القلق؟',
         'options': [
-          'Relaxation',
-          'Physical activity',
-          'Meditation',
-          'Talking with friends',
+          'الاسترخاء',
+          'النشاط البدني',
+          'التأمل',
+          'التحدث مع الأصدقاء',
         ],
       },
       {
         'id': 9,
-        'question': 'How do you act in situations that\ncause anxiety?',
+        'question': 'كيف تتصرف في الأحداث التي تسبب لك القلق؟',
         'options': [
-          'Avoid it',
-          "Can't control my reaction",
-          "Can't think",
-          'Seek help',
+          'أتجنبها',
+          "لا أتحكم في رد فعلي",
+          "لا أستطيع التفكير"
+              'أطلب المساعدة',
         ],
       },
       {
         'id': 10,
-        'question': 'How would you describe your\nmood most of the time?',
-        'options': ['Optimistic', 'Neutral', 'Pessimistic'],
+        'question': 'كيف تصف مزاجك بشكل عام معظم الوقت؟',
+        'options': ['متفائل', 'محايد', 'متشائم'],
       },
     ],
   },
   {
-    'title': 'Your Preferences & Social Comfort',
+    'title': 'تفضيلاتك وراحتك الاجتماعية',
     'questions': [
       {
         'id': 11,
-        'question':
-            'What type of content do you\nprefer for mental health support?',
+        'question': 'ما نوع المحتوى الذي تفضله لدعم الصحة النفسية؟',
         'options': [
-          'Motivational videos',
-          'Interactive exercises',
-          'Reading (Articles)',
-          'Guided sessions (Podcasts)',
+          'فيديوهات تحفيزية',
+          'تمارين تفاعلية',
+          'القراءة (مقالات)',
+          'جلسات إرشادية (بودكاست)',
         ],
       },
       {
         'id': 12,
-        'question': 'How much time do you spend\nusing apps daily?',
-        'options': ['1-2 hours', '3-4 hours', '4-6 hours', 'More than 6 hours'],
+        'question': 'كم من الوقت تقضي في استخدام التطبيقات يوميا؟',
+        'options': [
+          'من 1 إلى 2 ساعة',
+          'من 3 إلى 4 ساعات',
+          'من 4 إلى 6 ساعات',
+          'أكثر من 6 ساعات'
+        ],
       },
       {
         'id': 13,
-        'question': 'How comfortable are you in\nsocial situations?',
+        'question': 'ما مدى راحتك في المواقف الاجتماعية؟',
         'options': [
-          'Completely uncomfortable',
-          'Uncomfortable',
-          'Comfortable',
-          'Very comfortable',
+          'غير مرتاح تماما',
+          'غير مرتاح',
+          'مرتاح',
+          'مرتاح جدا',
         ],
       },
       {
         'id': 14,
         'question':
-            'Do you feel better interacting\nwith people online rather than in\nperson?',
-        'options': ['Yes', 'No', 'Neutral'],
+            'هل تشعر بتحسن عند التفاعل مع الناس عبر الإنترنت بدلا من التفاعل معهم شخصيا؟',
+        'options': ['نعم', 'لا', 'محايد'],
       },
     ],
   },
