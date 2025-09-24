@@ -1,4 +1,4 @@
-import 'package:calmleticsarab/qustions/sports_anxiety_test.dart';
+import 'package:calmleticsarab/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Calmletics',
 
-      // دعم العربي
+  
       locale: const Locale('ar'),
       supportedLocales: const [
         Locale('ar'), // عربي
@@ -26,12 +26,12 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
 
-      // اتجاه الكتابة (من اليمين لليسار)
+    
       builder: (context, child) {
         return Directionality(textDirection: TextDirection.rtl, child: child!);
       },
 
-      home:  const SportsAnxietyTest(),
+      home:  const SplashScreen(),
     );
   }
 }

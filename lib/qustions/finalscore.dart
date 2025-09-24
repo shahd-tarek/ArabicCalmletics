@@ -239,11 +239,11 @@ class _AnxietyScreenState extends State<AnxietyScreen> {
 
   String _getAnxietyStatus() {
     if (widget.percentage <= 33) {
-      return "Low";
+      return "منخفض";
     } else if (widget.percentage <= 66) {
-      return "Moderate";
+      return "متوسط";
     } else {
-      return "High";
+      return "عالي";
     }
   }
 
