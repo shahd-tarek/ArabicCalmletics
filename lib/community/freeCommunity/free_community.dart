@@ -61,13 +61,12 @@ class freeCommunityState extends State<freeCommunity> {
                       profileImage == null || profileImage!.isEmpty
                           ? const CircularProgressIndicator(strokeWidth: 2)
                           : CircleAvatar(
-                            radius: avatarRadius,
-                            backgroundImage: AssetImage(profileImage!),
-                            onBackgroundImageError:
-                                (_, __) => setState(() {
-                                  profileImage = null;
-                                }),
-                          ),
+                              radius: avatarRadius,
+                              backgroundImage: AssetImage(profileImage!),
+                              onBackgroundImageError: (_, __) => setState(() {
+                                profileImage = null;
+                              }),
+                            ),
                     ],
                   ),
                   SizedBox(width: padding * 1.5), // 30 -> نسبي

@@ -44,7 +44,7 @@ class PlanPage extends StatelessWidget {
 
               final progressValue =
                   double.tryParse(percentageStr.replaceAll('%', '').trim()) ??
-                  0.0;
+                      0.0;
 
               return Column(
                 children: [
@@ -138,15 +138,14 @@ class PlanPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder:
-                                      (context) => PlanDayTask(
-                                        sessionId: session.sessionId,
-                                        sessionName: session.sessionName,
-                                        sessionNumber: session.sessionNumber,
-                                        status:
-                                            "https://calmletics-production.up.railway.app${session.status}",
-                                        sessionType: session.sessionType,
-                                      ),
+                                  builder: (context) => PlanDayTask(
+                                    sessionId: session.sessionId,
+                                    sessionName: session.sessionName,
+                                    sessionNumber: session.sessionNumber,
+                                    status:
+                                        "https://calmletics-production.up.railway.app${session.status}",
+                                    sessionType: session.sessionType,
+                                  ),
                                 ),
                               );
                             },
@@ -185,15 +184,15 @@ class PlanPage extends StatelessWidget {
                                                 "https://calmletics-production.up.railway.app${session.status}",
                                                 width: screenWidth * 0.06,
                                                 height: screenWidth * 0.06,
-                                                errorBuilder:
-                                                    (
-                                                      context,
-                                                      error,
-                                                      stackTrace,
-                                                    ) => Icon(
-                                                      Icons.broken_image,
-                                                      size: screenWidth * 0.06,
-                                                    ),
+                                                errorBuilder: (
+                                                  context,
+                                                  error,
+                                                  stackTrace,
+                                                ) =>
+                                                    Icon(
+                                                  Icons.broken_image,
+                                                  size: screenWidth * 0.06,
+                                                ),
                                               ),
                                               SizedBox(
                                                 width: screenWidth * 0.015,

@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-
 import 'package:calmleticsarab/coach/VR/vr_schedula.dart';
 import 'package:calmleticsarab/coach/screens/coach_home.dart';
 import 'package:calmleticsarab/coach/screens/community_pop_code.dart';
@@ -10,7 +9,6 @@ import 'package:calmleticsarab/coach/widget/bottom_navigation_bar.dart';
 import 'package:calmleticsarab/coach/widgetsOfHome/community_card.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:flutter/material.dart';
-
 
 class AllCommunity extends StatefulWidget {
   final bool showBottomBar;
@@ -63,7 +61,7 @@ class _AllCommunityState extends State<AllCommunity> {
 
   void _navigateToScreen(int index) {
     switch (index) {
-        case 0:
+      case 0:
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const CoachHome()),
@@ -72,7 +70,7 @@ class _AllCommunityState extends State<AllCommunity> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) =>  VRScheduleScreen()),
+          MaterialPageRoute(builder: (context) => VRScheduleScreen()),
         );
         break;
       case 2:
@@ -81,7 +79,7 @@ class _AllCommunityState extends State<AllCommunity> {
           MaterialPageRoute(builder: (context) => const Players()),
         );
       case 3:
-       Navigator.pushReplacement(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const AllCommunity()),
         );

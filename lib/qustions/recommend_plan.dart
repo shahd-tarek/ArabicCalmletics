@@ -95,107 +95,103 @@ void showRecommendationDialog(BuildContext context) {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    onPressed:
-                        isLoading
-                            ? null
-                            : () async {
-                              setState(() {
-                                isLoading = true;
-                              });
+                    onPressed: isLoading
+                        ? null
+                        : () async {
+                            setState(() {
+                              isLoading = true;
+                            });
 
-                              final prefs =
-                                  await SharedPreferences.getInstance();
+                            final prefs = await SharedPreferences.getInstance();
 
-                              if (!isPlanReady) {
-                                // First click: call API and get plan
-                                recommendedPlanId =
-                                    await Api()
-                                        .forwardRecommendationAnswersToLocalAPI();
+                            if (!isPlanReady) {
+                              // First click: call API and get plan
+                              recommendedPlanId = await Api()
+                                  .forwardRecommendationAnswersToLocalAPI();
 
-                                if (recommendedPlanId != null) {
-                                  await prefs.setInt(
-                                    "recommended_plan_id",
-                                    recommendedPlanId!,
-                                  );
-                                  setState(() {
-                                    isPlanReady = true;
-                                    isLoading = false;
-                                  });
-                                } else {
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                        '❌ Failed to get recommendation.',
-                                      ),
-                                    ),
-                                  );
-                                }
-                              } else {
-                                // Second click: submit to external API and go to plan page
-                                String? token = await TokenHelper.getToken();
-
-                                final response = await http.post(
-                                  Uri.parse(
-                                    'https://calmletics-production.up.railway.app/api/player/recommended ',
-                                  ),
-                                  headers: {
-                                    'Authorization': 'Bearer $token',
-                                    'Content-Type': 'application/json',
-                                  },
-                                  body:
-                                      '{"recommended_plan_id": $recommendedPlanId}',
+                              if (recommendedPlanId != null) {
+                                await prefs.setInt(
+                                  "recommended_plan_id",
+                                  recommendedPlanId!,
                                 );
-
-                                if (response.statusCode == 200) {
-                                  Navigator.of(context).pop();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const PlanPage(),
-                                    ),
-                                  );
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        '❌ Failed to submit plan: ${response.statusCode}',
-                                      ),
-                                    ),
-                                  );
-                                }
-
+                                setState(() {
+                                  isPlanReady = true;
+                                  isLoading = false;
+                                });
+                              } else {
                                 setState(() {
                                   isLoading = false;
                                 });
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      '❌ Failed to get recommendation.',
+                                    ),
+                                  ),
+                                );
                               }
-                            },
+                            } else {
+                              // Second click: submit to external API and go to plan page
+                              String? token = await TokenHelper.getToken();
+
+                              final response = await http.post(
+                                Uri.parse(
+                                  'https://calmletics-production.up.railway.app/api/player/recommended ',
+                                ),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                  'Content-Type': 'application/json',
+                                },
+                                body:
+                                    '{"recommended_plan_id": $recommendedPlanId}',
+                              );
+
+                              if (response.statusCode == 200) {
+                                Navigator.of(context).pop();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const PlanPage(),
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      '❌ Failed to submit plan: ${response.statusCode}',
+                                    ),
+                                  ),
+                                );
+                              }
+
+                              setState(() {
+                                isLoading = false;
+                              });
+                            }
+                          },
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: buttonHorizontalPadding,
                         vertical: buttonVerticalPadding,
                       ),
-                      child:
-                          isLoading
-                              ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  color: Colors.white,
-                                  strokeWidth: 2,
-                                ),
-                              )
-                              : Text(
-                                isPlanReady ? 'اظهر الخطة' : 'خطتك المقترَحة',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: buttonFontSize,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                      child: isLoading
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
                               ),
+                            )
+                          : Text(
+                              isPlanReady ? 'اظهر الخطة' : 'خطتك المقترَحة',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: buttonFontSize,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                     ),
                   ),
                 ],

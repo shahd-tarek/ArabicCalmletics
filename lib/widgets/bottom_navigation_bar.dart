@@ -43,10 +43,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
           Icon(
             icon,
             size: 28,
-            color:
-                isSelected
-                    ? kPrimaryColor
-                    : const Color.fromRGBO(200, 200, 200, 1),
+            color: isSelected
+                ? kPrimaryColor
+                : const Color.fromRGBO(200, 200, 200, 1),
           ),
           const SizedBox(height: 4),
           Text(
@@ -54,10 +53,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              color:
-                  isSelected
-                      ? kPrimaryColor
-                      : const Color.fromRGBO(200, 200, 200, 1),
+              color: isSelected
+                  ? kPrimaryColor
+                  : const Color.fromRGBO(200, 200, 200, 1),
             ),
           ),
         ],

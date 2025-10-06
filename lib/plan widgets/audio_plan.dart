@@ -98,10 +98,9 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
                     child: Slider(
                       min: 0,
                       max: _duration.inSeconds.toDouble(),
-                      value:
-                          _position.inSeconds
-                              .clamp(0, _duration.inSeconds)
-                              .toDouble(),
+                      value: _position.inSeconds
+                          .clamp(0, _duration.inSeconds)
+                          .toDouble(),
                       onChanged: (value) {
                         _audioPlayer.seek(Duration(seconds: value.toInt()));
                       },

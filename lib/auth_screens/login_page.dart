@@ -57,10 +57,9 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder:
-          (_) => const Center(
-            child: CircularProgressIndicator(color: kPrimaryColor),
-          ),
+      builder: (_) => const Center(
+        child: CircularProgressIndicator(color: kPrimaryColor),
+      ),
     );
   }
 
@@ -97,30 +96,29 @@ class _LoginPageState extends State<LoginPage> {
   void showModernDialog(String title, String message, {bool success = true}) {
     showDialog(
       context: context,
-      builder:
-          (_) => AlertDialog(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+      builder: (_) => AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: Row(
+          children: [
+            Icon(
+              success ? Icons.check_circle : Icons.error,
+              color: success ? Colors.green : Colors.red,
             ),
-            title: Row(
-              children: [
-                Icon(
-                  success ? Icons.check_circle : Icons.error,
-                  color: success ? Colors.green : Colors.red,
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: success ? Colors.green : Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            const SizedBox(width: 10),
+            Text(
+              title,
+              style: TextStyle(
+                color: success ? Colors.green : Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            content: Text(message, style: const TextStyle(fontSize: 16)),
-          ),
+          ],
+        ),
+        content: Text(message, style: const TextStyle(fontSize: 16)),
+      ),
     );
   }
 

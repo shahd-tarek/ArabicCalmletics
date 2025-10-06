@@ -45,18 +45,16 @@ class _UserTypeState extends State<UserType> {
                 children: [
                   CircleAvatar(
                     radius: screenWidth * 0.22,
-                    backgroundColor:
-                        selectedRole == 'Coach'
-                            ? Colors.green[100]
-                            : Colors.white,
+                    backgroundColor: selectedRole == 'Coach'
+                        ? Colors.green[100]
+                        : Colors.white,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(screenWidth * 0.2),
                         border: Border.all(
-                          color:
-                              selectedRole == 'Coach'
-                                  ? kPrimaryColor
-                                  : Colors.grey,
+                          color: selectedRole == 'Coach'
+                              ? kPrimaryColor
+                              : Colors.grey,
                           width: 2,
                         ),
                       ),
@@ -106,18 +104,16 @@ class _UserTypeState extends State<UserType> {
                 children: [
                   CircleAvatar(
                     radius: screenWidth * 0.22,
-                    backgroundColor:
-                        selectedRole == 'Player'
-                            ? Colors.green[100]
-                            : Colors.white,
+                    backgroundColor: selectedRole == 'Player'
+                        ? Colors.green[100]
+                        : Colors.white,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(screenWidth * 0.2),
                         border: Border.all(
-                          color:
-                              selectedRole == 'Player'
-                                  ? kPrimaryColor
-                                  : Colors.grey,
+                          color: selectedRole == 'Player'
+                              ? kPrimaryColor
+                              : Colors.grey,
                           width: 2,
                         ),
                       ),

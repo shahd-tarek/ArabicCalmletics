@@ -1,10 +1,8 @@
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:calmleticsarab/coach/screens/payment.dart';
 import 'package:calmleticsarab/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-
 
 class Vr extends StatelessWidget {
   const Vr({super.key});
@@ -52,9 +50,9 @@ class Vr extends StatelessWidget {
                       text: "ابدأ",
                       ontap: () {
                         Navigator.push(
-                          context,  
+                          context,
                           MaterialPageRoute(
-                              builder: (context) =>  PaymentPage()),
+                              builder: (context) => PaymentPage()),
                         );
                       }),
                   const SizedBox(

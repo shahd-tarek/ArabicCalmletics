@@ -17,9 +17,13 @@ class ProgressData {
     return ProgressData(
       sessionNumber: json["your plan"]["session_number"],
       sessionName: json["your plan"]["session_name"],
-      planPercentage: double.parse(json["your plan"]["Percentage"].replaceAll('%', '').trim()) / 100,
+      planPercentage: double.parse(
+              json["your plan"]["Percentage"].replaceAll('%', '').trim()) /
+          100,
       taskProgress: json["task's today"]["progress"],
-      taskPercentage: double.parse(json["task's today"]["Percentage"].replaceAll('%', '').trim()) / 100,
+      taskPercentage: double.parse(
+              json["task's today"]["Percentage"].replaceAll('%', '').trim()) /
+          100,
     );
   }
 }

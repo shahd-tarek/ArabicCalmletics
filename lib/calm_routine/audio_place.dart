@@ -205,21 +205,19 @@ class _AudioInPlaceState extends State<AudioInPlace>
                 width: double.infinity,
                 height: size.height * 0.07,
                 child: ElevatedButton(
-                  onPressed:
-                      isButtonEnabled
-                          ? () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => AudioPlayerScreen(
-                                      pageIndex: widget.pageIndex + 1,
-                                      totalPages: widget.totalPages,
-                                    ),
+                  onPressed: isButtonEnabled
+                      ? () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AudioPlayerScreen(
+                                pageIndex: widget.pageIndex + 1,
+                                totalPages: widget.totalPages,
                               ),
-                            );
-                          }
-                          : null,
+                            ),
+                          );
+                        }
+                      : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: kPrimaryColor,
                     shape: RoundedRectangleBorder(

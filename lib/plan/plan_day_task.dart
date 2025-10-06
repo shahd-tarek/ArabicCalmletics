@@ -114,9 +114,9 @@ class _PlanDayTaskState extends State<PlanDayTask>
                                         errorBuilder:
                                             (context, error, stackTrace) =>
                                                 Icon(
-                                                  Icons.broken_image,
-                                                  size: screenWidth * 0.06,
-                                                ),
+                                          Icons.broken_image,
+                                          size: screenWidth * 0.06,
+                                        ),
                                       ),
                                       SizedBox(width: screenWidth * 0.02),
                                       Text(
@@ -248,8 +248,7 @@ class _SessionTab extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
@@ -273,9 +272,8 @@ class _SessionTab extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder:
-                            (context) =>
-                                BookVRSessionPage(sessionId: sessionId),
+                        builder: (context) =>
+                            BookVRSessionPage(sessionId: sessionId),
                       ),
                     );
                   },

@@ -1,10 +1,8 @@
-
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/models/session_model.dart';
 import 'package:calmleticsarab/plan/plan_day_task.dart';
 import 'package:flutter/material.dart';
-
 
 class ChoosePlanPage extends StatelessWidget {
   final String planId;
@@ -44,8 +42,8 @@ class ChoosePlanPage extends StatelessWidget {
                   children: [
                     const Text(
                       "إجمالي الجلسات",
-                      style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(width: 8),
                     Container(
@@ -105,7 +103,8 @@ class ChoosePlanPage extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Padding(
-                                padding: const EdgeInsets.only(top: 24,left: 24,right: 24,bottom: 10),
+                                  padding: const EdgeInsets.only(
+                                      top: 24, left: 24, right: 24, bottom: 10),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
@@ -136,10 +135,10 @@ class ChoosePlanPage extends StatelessWidget {
                                       const SizedBox(height: 8),
                                       Text(
                                         session.sessionName,
-                                        style: const TextStyle(fontSize: 18,
-                                         color: textcolor,
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          color: textcolor,
                                         ),
-                                        
                                       ),
                                     ],
                                   ),
@@ -151,7 +150,7 @@ class ChoosePlanPage extends StatelessWidget {
                                   bottomRight: Radius.circular(16),
                                 ),
                                 child: Image.asset(
-                                   'assets/images/freepik--background-complete--inject-64 1.png',
+                                  'assets/images/freepik--background-complete--inject-64 1.png',
                                   width: 150,
                                   height: double.infinity,
                                   fit: BoxFit.cover,

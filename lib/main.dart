@@ -14,8 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Calmletics',
-
-  
       locale: const Locale('ar'),
       supportedLocales: const [
         Locale('ar'), // عربي
@@ -25,13 +23,10 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-
-    
       builder: (context, child) {
         return Directionality(textDirection: TextDirection.rtl, child: child!);
       },
-
-      home:  const SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

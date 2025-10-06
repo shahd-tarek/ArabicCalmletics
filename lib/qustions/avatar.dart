@@ -126,13 +126,12 @@ class _AvatarSelectionPageState extends State<AvatarSelectionPage> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  border:
-                                      isSelected
-                                          ? Border.all(
-                                            color: kPrimaryColor,
-                                            width: 3,
-                                          )
-                                          : null,
+                                  border: isSelected
+                                      ? Border.all(
+                                          color: kPrimaryColor,
+                                          width: 3,
+                                        )
+                                      : null,
                                 ),
                                 child: CircleAvatar(
                                   radius: avatarRadius,
@@ -143,7 +142,6 @@ class _AvatarSelectionPageState extends State<AvatarSelectionPage> {
                                 ),
                               ),
                             ),
-
                             if (isSelected)
                               Positioned(
                                 top: avatarRadius * 0.2,

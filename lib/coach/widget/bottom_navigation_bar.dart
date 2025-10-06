@@ -1,4 +1,3 @@
-
 import 'package:calmleticsarab/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +47,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
             imagePath,
             width: 24,
             height: 24,
-            color: isSelected ? const Color.fromRGBO(106, 149, 122, 1) : Colors.grey,
+            color: isSelected
+                ? const Color.fromRGBO(106, 149, 122, 1)
+                : Colors.grey,
           ),
           const SizedBox(height: 4),
           Text(
@@ -56,9 +57,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              color: isSelected
-                  ? kPrimaryColor
-                  : Colors.grey,
+              color: isSelected ? kPrimaryColor : Colors.grey,
             ),
           ),
         ],

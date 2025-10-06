@@ -43,10 +43,10 @@ class _BoxBreathingScreenState extends State<BoxBreathingScreen>
       vsync: this,
       duration: const Duration(seconds: 4),
     )..addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _nextPhase();
-      }
-    });
+        if (status == AnimationStatus.completed) {
+          _nextPhase();
+        }
+      });
 
     _updateDotAnimation();
   }
@@ -253,28 +253,27 @@ class _BoxBreathingScreenState extends State<BoxBreathingScreen>
                           const Spacer(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children:
-                                phases
-                                    .map(
-                                      (p) => Column(
-                                        children: [
-                                          Text(
-                                            p,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          const Text(
-                                            "4s",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 30),
-                                        ],
+                            children: phases
+                                .map(
+                                  (p) => Column(
+                                    children: [
+                                      Text(
+                                        p,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    )
-                                    .toList(),
+                                      const Text(
+                                        "4s",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 30),
+                                    ],
+                                  ),
+                                )
+                                .toList(),
                           ),
                         ],
                       ),
@@ -294,25 +293,23 @@ class _BoxBreathingScreenState extends State<BoxBreathingScreen>
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed:
-                      (isStarted && loopCount < maxLoops)
-                          ? null
-                          : () {
-                            if (loopCount == maxLoops) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) => QuickTaskThree(
-                                        pageIndex: widget.pageIndex + 1,
-                                        totalPages: widget.totalPages,
-                                      ),
+                  onPressed: (isStarted && loopCount < maxLoops)
+                      ? null
+                      : () {
+                          if (loopCount == maxLoops) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => QuickTaskThree(
+                                  pageIndex: widget.pageIndex + 1,
+                                  totalPages: widget.totalPages,
                                 ),
-                              );
-                            } else {
-                              _startBreathing();
-                            }
-                          },
+                              ),
+                            );
+                          } else {
+                            _startBreathing();
+                          }
+                        },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: kPrimaryColor,
                     disabledBackgroundColor: Colors.grey.withOpacity(0.5),

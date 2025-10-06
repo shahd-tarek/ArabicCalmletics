@@ -1,11 +1,9 @@
 // ignore_for_file: avoid_print
 
-
 import 'package:calmleticsarab/coach/tabbars/player_tab_bar.dart';
 import 'package:calmleticsarab/coach/widgetsOfHome/player_progress_card.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:flutter/material.dart';
-
 
 class CommPlayers extends StatefulWidget {
   final bool showBottomBar;

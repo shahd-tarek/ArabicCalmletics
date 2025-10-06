@@ -103,10 +103,9 @@ class _TaskTabState extends State<TaskTab> {
               padding: EdgeInsets.all(padding),
               child: Container(
                 decoration: BoxDecoration(
-                  color:
-                      isCardDisabled
-                          ? const Color.fromARGB(255, 243, 240, 240)
-                          : Colors.white,
+                  color: isCardDisabled
+                      ? const Color.fromARGB(255, 243, 240, 240)
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(borderRadius),
                   border: Border.all(color: Colors.grey.shade300),
                 ),
@@ -188,10 +187,9 @@ class _TaskTabState extends State<TaskTab> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: feelings.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount:
-                            screenWidth < 600
-                                ? 3
-                                : 4, // 3 في الموبايل، 4 في التابلت
+                        crossAxisCount: screenWidth < 600
+                            ? 3
+                            : 4, // 3 في الموبايل، 4 في التابلت
                         childAspectRatio: screenWidth < 600 ? 1.6 : 1.8,
                         crossAxisSpacing: padding,
                         mainAxisSpacing: padding,
@@ -206,18 +204,16 @@ class _TaskTabState extends State<TaskTab> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color:
-                                  isSelected
-                                      ? const Color.fromARGB(255, 221, 239, 222)
-                                      : Colors.grey.shade100,
+                              color: isSelected
+                                  ? const Color.fromARGB(255, 221, 239, 222)
+                                  : Colors.grey.shade100,
                               borderRadius: BorderRadius.circular(
                                 borderRadius * 0.8,
                               ),
                               border: Border.all(
-                                color:
-                                    isSelected
-                                        ? Colors.green
-                                        : Colors.transparent,
+                                color: isSelected
+                                    ? Colors.green
+                                    : Colors.transparent,
                               ),
                             ),
                             alignment: Alignment.center,
@@ -238,14 +234,12 @@ class _TaskTabState extends State<TaskTab> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: fontSizeSmall,
-                                    color:
-                                        isSelected
-                                            ? kPrimaryColor
-                                            : Colors.black87,
-                                    fontWeight:
-                                        isSelected
-                                            ? FontWeight.bold
-                                            : FontWeight.normal,
+                                    color: isSelected
+                                        ? kPrimaryColor
+                                        : Colors.black87,
+                                    fontWeight: isSelected
+                                        ? FontWeight.bold
+                                        : FontWeight.normal,
                                   ),
                                 ),
                               ],
@@ -282,46 +276,45 @@ class _TaskTabState extends State<TaskTab> {
                     SizedBox(height: screenHeight * 0.02),
                     Center(
                       child: ElevatedButton(
-                        onPressed:
-                            isCardDisabled
-                                ? null
-                                : () {
-                                  if (!isChecked) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Please confirm that you completed the task',
-                                        ),
+                        onPressed: isCardDisabled
+                            ? null
+                            : () {
+                                if (!isChecked) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'Please confirm that you completed the task',
                                       ),
-                                    );
-                                    return;
-                                  }
-                                  if (selectedFeelingIndex == -1) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Please select how you felt',
-                                        ),
+                                    ),
+                                  );
+                                  return;
+                                }
+                                if (selectedFeelingIndex == -1) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'Please select how you felt',
                                       ),
-                                    );
-                                    return;
-                                  }
-                                  if (notesController.text.isEmpty) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Please write a your feeling',
-                                        ),
+                                    ),
+                                  );
+                                  return;
+                                }
+                                if (notesController.text.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'Please write a your feeling',
                                       ),
-                                    );
-                                    return;
-                                  }
-                                  setState(() {
-                                    isCardDisabled = true;
-                                    isLoading = true;
-                                  });
-                                  sendSessionDone(widget.sessionId);
-                                },
+                                    ),
+                                  );
+                                  return;
+                                }
+                                setState(() {
+                                  isCardDisabled = true;
+                                  isLoading = true;
+                                });
+                                sendSessionDone(widget.sessionId);
+                              },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: kPrimaryColor,
                           padding: EdgeInsets.symmetric(

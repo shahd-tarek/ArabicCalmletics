@@ -22,7 +22,11 @@ class TopThree extends StatelessWidget {
     List<Widget> userColumns = [];
 
     // عشان ترتيب الرتب 1,2,3 مع صور خاصة بكل رتبة
-    final rankImages = ['assets/images/1.png', 'assets/images/2.png', 'assets/images/3.png'];
+    final rankImages = [
+      'assets/images/1.png',
+      'assets/images/2.png',
+      'assets/images/3.png'
+    ];
 
     for (int i = 0; i < displayCount; i++) {
       userColumns.add(_buildUserColumn(topUsers[i], '${i + 1}', rankImages[i]));

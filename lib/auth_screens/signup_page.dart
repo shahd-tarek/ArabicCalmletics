@@ -37,10 +37,9 @@ class _SignupState extends State<Signup> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder:
-          (_) => const Center(
-            child: CircularProgressIndicator(color: kPrimaryColor),
-          ),
+      builder: (_) => const Center(
+        child: CircularProgressIndicator(color: kPrimaryColor),
+      ),
     );
   }
 
@@ -51,30 +50,29 @@ class _SignupState extends State<Signup> {
   void showModernDialog(String title, String message, {bool success = true}) {
     showDialog(
       context: context,
-      builder:
-          (_) => AlertDialog(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+      builder: (_) => AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: Row(
+          children: [
+            Icon(
+              success ? Icons.check_circle : Icons.error,
+              color: success ? Colors.green : Colors.red,
             ),
-            title: Row(
-              children: [
-                Icon(
-                  success ? Icons.check_circle : Icons.error,
-                  color: success ? Colors.green : Colors.red,
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: success ? Colors.green : Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            const SizedBox(width: 10),
+            Text(
+              title,
+              style: TextStyle(
+                color: success ? Colors.green : Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            content: Text(message, style: const TextStyle(fontSize: 16)),
-          ),
+          ],
+        ),
+        content: Text(message, style: const TextStyle(fontSize: 16)),
+      ),
     );
   }
 
@@ -97,10 +95,9 @@ class _SignupState extends State<Signup> {
     );
     hideLoadingDialog();
     if (response.token.isNotEmpty) {
-      String successMessage =
-          widget.userRole == "Coach"
-              ? "coach successfully registered"
-              : "player successfully registered";
+      String successMessage = widget.userRole == "Coach"
+          ? "coach successfully registered"
+          : "player successfully registered";
       if (response.message.contains(successMessage)) {
         Widget nextPage =
             widget.userRole == "Coach" ? const CoachAvatar() : const Start();
@@ -342,10 +339,9 @@ class _SignupState extends State<Signup> {
                     ),
                     prefixIcon: Icon(
                       Icons.lock_rounded,
-                      color:
-                          isConfirmPasswordFocused
-                              ? kPrimaryColor
-                              : Colors.grey,
+                      color: isConfirmPasswordFocused
+                          ? kPrimaryColor
+                          : Colors.grey,
                     ),
                     labelText: "تأكيد كلمة السر",
                     labelStyle: TextStyle(
@@ -408,9 +404,8 @@ class _SignupState extends State<Signup> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder:
-                                (context) =>
-                                    LoginPage(selectedRole: widget.userRole),
+                            builder: (context) =>
+                                LoginPage(selectedRole: widget.userRole),
                           ),
                         );
                       },

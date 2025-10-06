@@ -50,8 +50,7 @@ class _ChatPageState extends State<ChatPage> {
 
       setState(() {
         userId = data['id'];
-        userAvatar =
-            data['image'] ??
+        userAvatar = data['image'] ??
             "assets/images/Coach 1.png"; //  Assign avatar dynamically
       });
 
@@ -80,16 +79,14 @@ class _ChatPageState extends State<ChatPage> {
       final List<dynamic> fetchedMessages = data['messages'];
 
       setState(() {
-        messages =
-            fetchedMessages.map((msg) {
-              return {
-                "user": msg['user']['name'],
-                "message": msg['message'],
-                "avatar": msg['user']['image'] ?? "assets/images/Coach 1.png",
-                "isMe":
-                    msg['user']['id'] == userId, // مقارنة مع user_id الحقيقي
-              };
-            }).toList();
+        messages = fetchedMessages.map((msg) {
+          return {
+            "user": msg['user']['name'],
+            "message": msg['message'],
+            "avatar": msg['user']['image'] ?? "assets/images/Coach 1.png",
+            "isMe": msg['user']['id'] == userId, // مقارنة مع user_id الحقيقي
+          };
+        }).toList();
       });
     } else {
       print("Failed to fetch messages: ${response.body}");

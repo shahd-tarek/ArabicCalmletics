@@ -54,13 +54,12 @@ class coachCommunityState extends State<coachCommunity> {
                       profileImage == null || profileImage!.isEmpty
                           ? const CircularProgressIndicator()
                           : CircleAvatar(
-                            radius: 40,
-                            backgroundImage: AssetImage(profileImage!),
-                            onBackgroundImageError:
-                                (_, __) => setState(() {
-                                  profileImage = null;
-                                }),
-                          ),
+                              radius: 40,
+                              backgroundImage: AssetImage(profileImage!),
+                              onBackgroundImageError: (_, __) => setState(() {
+                                profileImage = null;
+                              }),
+                            ),
                     ],
                   ),
                   const SizedBox(width: 30),
@@ -170,7 +169,7 @@ class coachCommunityState extends State<coachCommunity> {
                 ),
               ),
 
-        /*      const SizedBox(height: 20),
+              /*      const SizedBox(height: 20),
               const Text(
                 "إليك دائرة دعمك",
                 style: TextStyle(

@@ -67,10 +67,9 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                   child: Slider(
                     min: 0,
                     max: duration.inSeconds.toDouble(),
-                    value:
-                        position.inSeconds
-                            .clamp(0, duration.inSeconds)
-                            .toDouble(),
+                    value: position.inSeconds
+                        .clamp(0, duration.inSeconds)
+                        .toDouble(),
                     onChanged: (value) {
                       _controller.seekTo(Duration(seconds: value.toInt()));
                     },

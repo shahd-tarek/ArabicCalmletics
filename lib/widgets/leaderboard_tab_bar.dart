@@ -61,8 +61,9 @@ class LeaderboardTabBar extends StatelessWidget {
             tabName,
             style: TextStyle(
               fontSize: 16,
-              color:
-                  isSelected ? Colors.white : const Color.fromRGBO(176, 176, 176, 1),
+              color: isSelected
+                  ? Colors.white
+                  : const Color.fromRGBO(176, 176, 176, 1),
               fontWeight: FontWeight.bold,
             ),
           ),

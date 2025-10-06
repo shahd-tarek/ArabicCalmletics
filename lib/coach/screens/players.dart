@@ -1,4 +1,3 @@
-
 // ignore_for_file: avoid_print
 
 import 'package:calmleticsarab/coach/VR/vr_schedula.dart';
@@ -154,24 +153,25 @@ class _PlayersState extends State<Players> {
               child: isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : players.isEmpty
-                  ? const Center(child: Text("No players found"))
-                  : ListView.builder(
-                      itemCount: players.length,
-                      itemBuilder: (context, index) {
-                        var player = players[index];
+                      ? const Center(child: Text("No players found"))
+                      : ListView.builder(
+                          itemCount: players.length,
+                          itemBuilder: (context, index) {
+                            var player = players[index];
 
-                        return PlayerProgressCard(
-                          playerName: player['player_name'] ?? 'Unknown',
-                          communityName: player['community_name'] ?? 'Unknown',
-                          statusMessage:
-                              player['status_message'] ?? 'No status',
-                          playerImage: player['image'],
-                          imageUrl: player['status_image'] != null
-                              ? '$baseUrl${player['status_image']}'
-                              : '',
-                        );
-                      },
-                    ),
+                            return PlayerProgressCard(
+                              playerName: player['player_name'] ?? 'Unknown',
+                              communityName:
+                                  player['community_name'] ?? 'Unknown',
+                              statusMessage:
+                                  player['status_message'] ?? 'No status',
+                              playerImage: player['image'],
+                              imageUrl: player['status_image'] != null
+                                  ? '$baseUrl${player['status_image']}'
+                                  : '',
+                            );
+                          },
+                        ),
             ),
           ],
         ),

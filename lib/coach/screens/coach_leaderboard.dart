@@ -1,10 +1,8 @@
-
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/widgets/leaderboard_item.dart';
 import 'package:calmleticsarab/widgets/leaderboard_tab_bar.dart';
 import 'package:calmleticsarab/widgets/top_three.dart';
 import 'package:flutter/material.dart';
-
 
 class CoachLeaderboard extends StatefulWidget {
   final String communityId;

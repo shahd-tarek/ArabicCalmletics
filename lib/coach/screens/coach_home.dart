@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:calmleticsarab/coach/VR/vr_schedula.dart';
@@ -203,8 +202,8 @@ class _HomeContentState extends State<HomeContent> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => CommunityPopCode(
-                                    communityId: community['community_id']
-                                        .toString(),
+                                    communityId:
+                                        community['community_id'].toString(),
                                     otpCode: community['code'] ?? 'N/A',
                                   ),
                                 ),

@@ -74,10 +74,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
         ],
       ),
-      bottomSheet:
-          isLastPage
-              ? buildGetStartedButton(context)
-              : buildBottomNavigation(context),
+      bottomSheet: isLastPage
+          ? buildGetStartedButton(context)
+          : buildBottomNavigation(context),
     );
   }
 

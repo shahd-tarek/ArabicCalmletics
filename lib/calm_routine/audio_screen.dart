@@ -214,10 +214,9 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                           child: Slider(
                             min: 0,
                             max: _duration.inSeconds.toDouble(),
-                            value:
-                                _position.inSeconds
-                                    .clamp(0, _duration.inSeconds)
-                                    .toDouble(),
+                            value: _position.inSeconds
+                                .clamp(0, _duration.inSeconds)
+                                .toDouble(),
                             onChanged: (value) {
                               _player.seek(Duration(seconds: value.toInt()));
                             },
@@ -271,17 +270,16 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  onPressed:
-                      isAudioFinished
-                          ? () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const MainScreen(),
-                              ),
-                            );
-                          }
-                          : null,
+                  onPressed: isAudioFinished
+                      ? () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainScreen(),
+                            ),
+                          );
+                        }
+                      : null,
                   child: Text(
                     "تم الاستعداد",
                     style: TextStyle(

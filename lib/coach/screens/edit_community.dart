@@ -1,6 +1,5 @@
 // ignore_for_file: use_super_parameters, library_private_types_in_public_api, use_build_context_synchronously, avoid_print, prefer_const_constructors
 
-
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +31,8 @@ class _EditCommunityState extends State<EditCommunity> {
   Future<void> fetchPlayersAndCommunityName() async {
     try {
       final data = await Api.fetchCommunityplayerInEdit(widget.communityId);
-      final nameFromFirstPlayer = data.isNotEmpty
-          ? data[0]['community_name'] ?? ''
-          : '';
+      final nameFromFirstPlayer =
+          data.isNotEmpty ? data[0]['community_name'] ?? '' : '';
 
       setState(() {
         players = data;
@@ -139,10 +137,10 @@ class _EditCommunityState extends State<EditCommunity> {
                         final imagePath = player['image'];
                         final imageUrl =
                             imagePath != null && imagePath.isNotEmpty
-                            ? (imagePath.startsWith('assets/')
-                                  ? imagePath
-                                  : '$baseUrl$imagePath')
-                            : 'assets/images/avatar5.png';
+                                ? (imagePath.startsWith('assets/')
+                                    ? imagePath
+                                    : '$baseUrl$imagePath')
+                                : 'assets/images/avatar5.png';
 
                         return ListTile(
                           contentPadding: EdgeInsets.zero,

@@ -87,9 +87,9 @@ class _FreeLeaderboardState extends State<FreeLeaderboard> {
                     topThreeFree.isNotEmpty
                         ? TopThree(topUsers: topThreeFree)
                         : Text(
-                          "غير متاح لاعبيين",
-                          style: TextStyle(fontSize: fontSizeMedium),
-                        ),
+                            "غير متاح لاعبيين",
+                            style: TextStyle(fontSize: fontSizeMedium),
+                          ),
                   ],
                 ),
               ),
@@ -113,35 +113,33 @@ class _FreeLeaderboardState extends State<FreeLeaderboard> {
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: padding),
-                    child:
-                        isLoading
-                            ? const Center(child: CircularProgressIndicator())
-                            : otherUsers.isNotEmpty
+                    child: isLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : otherUsers.isNotEmpty
                             ? ListView.builder(
-                              itemCount: otherUsers.length,
-                              itemBuilder: (context, index) {
-                                final user = otherUsers[index];
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: screenHeight * 0.005,
-                                  ),
-                                  child: LeaderboardItem(
-                                    rank: user['rank'],
-                                    name: user['name'],
-                                    points: user['total_score'],
-                                    imagePath:
-                                        user['image'] ??
-                                        'assets/images/default.png',
-                                  ),
-                                );
-                              },
-                            )
+                                itemCount: otherUsers.length,
+                                itemBuilder: (context, index) {
+                                  final user = otherUsers[index];
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: screenHeight * 0.005,
+                                    ),
+                                    child: LeaderboardItem(
+                                      rank: user['rank'],
+                                      name: user['name'],
+                                      points: user['total_score'],
+                                      imagePath: user['image'] ??
+                                          'assets/images/default.png',
+                                    ),
+                                  );
+                                },
+                              )
                             : Center(
-                              child: Text(
-                                "لا يوجد لاعبيين في لوحة الصدارة",
-                                style: TextStyle(fontSize: fontSizeMedium),
+                                child: Text(
+                                  "لا يوجد لاعبيين في لوحة الصدارة",
+                                  style: TextStyle(fontSize: fontSizeMedium),
+                                ),
                               ),
-                            ),
                   ),
                 ),
               ),

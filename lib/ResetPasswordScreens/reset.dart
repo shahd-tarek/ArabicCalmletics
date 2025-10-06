@@ -85,10 +85,9 @@ class _ResetPassState extends State<ResetPass> {
                     floatingLabelStyle: const TextStyle(color: kPrimaryColor),
                     prefixIcon: Icon(
                       Icons.lock_rounded,
-                      color:
-                          passwordFocusNode.hasFocus
-                              ? kPrimaryColor
-                              : Colors.grey,
+                      color: passwordFocusNode.hasFocus
+                          ? kPrimaryColor
+                          : Colors.grey,
                     ),
                     labelText: "كلمة السر",
                     labelStyle: const TextStyle(
@@ -129,10 +128,9 @@ class _ResetPassState extends State<ResetPass> {
                     floatingLabelStyle: const TextStyle(color: kPrimaryColor),
                     prefixIcon: Icon(
                       Icons.lock_rounded,
-                      color:
-                          confirmPasswordFocusNode.hasFocus
-                              ? kPrimaryColor
-                              : Colors.grey,
+                      color: confirmPasswordFocusNode.hasFocus
+                          ? kPrimaryColor
+                          : Colors.grey,
                     ),
                     labelText: "تأكيد كلمة السر",
                     labelStyle: const TextStyle(

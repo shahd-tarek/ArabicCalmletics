@@ -30,9 +30,7 @@ class CustomDialog extends StatelessWidget {
                 ),
               ),
             ),
-
             const SizedBox(height: 20),
-
             const Text(
               "تهانينا!",
               style: TextStyle(
@@ -41,23 +39,18 @@ class CustomDialog extends StatelessWidget {
                 color: textcolor,
               ),
             ),
-
             const SizedBox(height: 20),
             SizedBox(
               height: 120,
               child: Image.asset('assets/images/Step One.png'),
             ),
-
             const SizedBox(height: 20),
-
             const Text(
               "لقد اتخذت الخطوة الأولى نحو إدارة قلقك",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-
             const SizedBox(height: 35),
-
             SizedBox(
               width: double.infinity,
               child: CustomButton(

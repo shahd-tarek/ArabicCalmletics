@@ -1,6 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace, deprecated_member_use, use_build_context_synchronously, avoid_print, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-
 import 'package:calmleticsarab/coach/screens/choose_plan.dart';
 import 'package:calmleticsarab/coach/screens/community_pop_code.dart';
 import 'package:calmleticsarab/coach/tabbars/tab_bar.dart';
@@ -36,9 +35,8 @@ class _CreateCommunityState extends State<CreateCommunity> {
         plans = response;
       });
 
-      List<String> planIds = response
-          .map((plan) => plan['plan_id'].toString())
-          .toList();
+      List<String> planIds =
+          response.map((plan) => plan['plan_id'].toString()).toList();
       print("Plan IDs: $planIds");
     } catch (e) {
       print('Error fetching plans: $e');
@@ -158,13 +156,13 @@ class _CreateCommunityState extends State<CreateCommunity> {
                                   final plan = plans[index];
                                   bool isSelected =
                                       plan['plan_id'].toString() ==
-                                      selectedPlanId;
+                                          selectedPlanId;
 
                                   return GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        selectedPlanId = plan['plan_id']
-                                            .toString();
+                                        selectedPlanId =
+                                            plan['plan_id'].toString();
                                       });
                                     },
                                     child: Container(
@@ -212,11 +210,11 @@ class _CreateCommunityState extends State<CreateCommunity> {
                                                 radius: 16,
                                                 backgroundColor:
                                                     const Color.fromRGBO(
-                                                      233,
-                                                      239,
-                                                      235,
-                                                      1,
-                                                    ),
+                                                  233,
+                                                  239,
+                                                  235,
+                                                  1,
+                                                ),
                                                 child: Text(
                                                   '${plan['sessions_count']}',
                                                   style: const TextStyle(
@@ -238,10 +236,9 @@ class _CreateCommunityState extends State<CreateCommunity> {
                                                     MaterialPageRoute(
                                                       builder: (context) =>
                                                           ChoosePlanPage(
-                                                            planId:
-                                                                plan['plan_id']
-                                                                    .toString(),
-                                                          ),
+                                                        planId: plan['plan_id']
+                                                            .toString(),
+                                                      ),
                                                     ),
                                                   );
                                                 },
@@ -258,24 +255,24 @@ class _CreateCommunityState extends State<CreateCommunity> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               SessionItem(
-                                                imageUrl:
-                                                    plan['audio_image'] != null
+                                                imageUrl: plan['audio_image'] !=
+                                                        null
                                                     ? '$baseUrl${plan['audio_image']}'
                                                     : '',
                                                 label:
                                                     '${plan['audio_percentage']}% Audio',
                                               ),
                                               SessionItem(
-                                                imageUrl:
-                                                    plan['video_image'] != null
+                                                imageUrl: plan['video_image'] !=
+                                                        null
                                                     ? '$baseUrl${plan['video_image']}'
                                                     : '',
                                                 label:
                                                     '${plan['video_percentage']}% Video',
                                               ),
                                               SessionItem(
-                                                imageUrl:
-                                                    plan['pdf_image'] != null
+                                                imageUrl: plan['pdf_image'] !=
+                                                        null
                                                     ? '$baseUrl${plan['pdf_image']}'
                                                     : '',
                                                 label:
@@ -336,10 +333,10 @@ class _CreateCommunityState extends State<CreateCommunity> {
 
                               if (response['data'] != null &&
                                   response['data']['code'] != null) {
-                                String otpCode = response['data']['code']
-                                    .toString();
-                                String communityId = response['data']['id']
-                                    .toString();
+                                String otpCode =
+                                    response['data']['code'].toString();
+                                String communityId =
+                                    response['data']['id'].toString();
 
                                 createCommunityPopDialog(
                                   context,

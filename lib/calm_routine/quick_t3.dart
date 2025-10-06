@@ -94,13 +94,12 @@ class _QuickTaskThreeState extends State<QuickTaskThree> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder:
-                (context) => AudioInPlace(
-                  imagePath: placeSceneImages[selectedPlaceIndex!],
-                  audioUrl: audioUrl,
-                  pageIndex: widget.pageIndex,
-                  totalPages: widget.totalPages,
-                ),
+            builder: (context) => AudioInPlace(
+              imagePath: placeSceneImages[selectedPlaceIndex!],
+              audioUrl: audioUrl,
+              pageIndex: widget.pageIndex,
+              totalPages: widget.totalPages,
+            ),
           ),
         );
       } else if (response.statusCode == 401) {
@@ -246,10 +245,9 @@ class _QuickTaskThreeState extends State<QuickTaskThree> {
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             border: Border.all(
-                                              color:
-                                                  selectedPlaceIndex == index
-                                                      ? kPrimaryColor
-                                                      : Colors.transparent,
+                                              color: selectedPlaceIndex == index
+                                                  ? kPrimaryColor
+                                                  : Colors.transparent,
                                               width: 2,
                                             ),
                                           ),
@@ -325,10 +323,9 @@ class _QuickTaskThreeState extends State<QuickTaskThree> {
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             border: Border.all(
-                                              color:
-                                                  selectedAudioIndex == index
-                                                      ? kPrimaryColor
-                                                      : Colors.transparent,
+                                              color: selectedAudioIndex == index
+                                                  ? kPrimaryColor
+                                                  : Colors.transparent,
                                               width: 2,
                                             ),
                                           ),

@@ -86,17 +86,16 @@ class _ForgetState extends State<Forget> {
                           color: isEmailSelected ? kPrimaryColor : Colors.grey,
                           width: 1.5,
                         ),
-                        boxShadow:
-                            isEmailSelected
-                                ? [
-                                  BoxShadow(
-                                    color: kPrimaryColor.withOpacity(0.3),
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ]
-                                : null,
+                        boxShadow: isEmailSelected
+                            ? [
+                                BoxShadow(
+                                  color: kPrimaryColor.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ]
+                            : null,
                       ),
                       child: Row(
                         children: [
@@ -142,17 +141,16 @@ class _ForgetState extends State<Forget> {
                           color: isPhoneSelected ? kPrimaryColor : Colors.grey,
                           width: 1.5,
                         ),
-                        boxShadow:
-                            isPhoneSelected
-                                ? [
-                                  BoxShadow(
-                                    color: kPrimaryColor.withOpacity(0.3),
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ]
-                                : null,
+                        boxShadow: isPhoneSelected
+                            ? [
+                                BoxShadow(
+                                  color: kPrimaryColor.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ]
+                            : null,
                       ),
                       child: Row(
                         children: [
@@ -188,8 +186,8 @@ class _ForgetState extends State<Forget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder:
-                                    (context) => const EmailVerificationPage(),
+                                builder: (context) =>
+                                    const EmailVerificationPage(),
                               ),
                             );
                           } else if (isPhoneSelected) {

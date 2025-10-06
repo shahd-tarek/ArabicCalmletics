@@ -1,11 +1,9 @@
-
 // ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'package:calmleticsarab/coach/screens/coach_home.dart';
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:flutter/material.dart';
-
 
 class CoachAvatar extends StatefulWidget {
   const CoachAvatar({super.key});
@@ -17,7 +15,7 @@ class CoachAvatar extends StatefulWidget {
 class _CoachAvatarState extends State<CoachAvatar> {
   int? selectedAvatarIndex;
   String? selectedAvatarUrl;
-  final Api api = Api(); 
+  final Api api = Api();
 
   final List<String> avatarImages =
       List.generate(6, (index) => 'assets/images/coach$index.png');
@@ -25,7 +23,7 @@ class _CoachAvatarState extends State<CoachAvatar> {
   void _onAvatarSelected(int index) {
     setState(() {
       selectedAvatarIndex = index;
-      selectedAvatarUrl = avatarImages[index]; 
+      selectedAvatarUrl = avatarImages[index];
     });
   }
 
@@ -33,7 +31,7 @@ class _CoachAvatarState extends State<CoachAvatar> {
     if (selectedAvatarUrl == null) return;
 
     bool success = await api.saveSelectedAvatar(selectedAvatarUrl!);
-    
+
     if (success) {
       print("Avatar saved successfully!");
       Navigator.push(
@@ -43,7 +41,8 @@ class _CoachAvatarState extends State<CoachAvatar> {
     } else {
       print("Failed to save avatar.");
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Failed to save avatar. Please try again.")),
+        const SnackBar(
+            content: Text("Failed to save avatar. Please try again.")),
       );
     }
   }
@@ -75,7 +74,9 @@ class _CoachAvatarState extends State<CoachAvatar> {
               const Text(
                 "اختر صورة رمزية لملفك الشخصي",
                 style: TextStyle(
-                    fontSize: 25, fontWeight: FontWeight.bold, color: textcolor),
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: textcolor),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
@@ -111,7 +112,8 @@ class _CoachAvatarState extends State<CoachAvatar> {
                               ),
                               child: CircleAvatar(
                                 radius: 45,
-                                backgroundImage: AssetImage(avatarImages[index]),
+                                backgroundImage:
+                                    AssetImage(avatarImages[index]),
                               ),
                             ),
                             if (isSelected)
@@ -136,7 +138,8 @@ class _CoachAvatarState extends State<CoachAvatar> {
                 ),
               ),
               ElevatedButton(
-                onPressed: selectedAvatarIndex != null ? _saveAvatarAndProceed : null,
+                onPressed:
+                    selectedAvatarIndex != null ? _saveAvatarAndProceed : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimaryColor,
                   minimumSize: const Size(double.infinity, 50),

@@ -121,133 +121,133 @@ class _UserProfileOverviewState extends State<UserProfileOverview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: bgcolor),
-      body:
-          isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : userData == null
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : userData == null
               ? const Center(child: Text("Error fetching user data"))
               : Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      profileImage == null || profileImage!.isEmpty
-                          ? const CircularProgressIndicator()
-                          : CircleAvatar(
-                            radius: 32,
-                            backgroundImage: AssetImage(profileImage!),
-                            onBackgroundImageError:
-                                (_, __) => setState(() {
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        profileImage == null || profileImage!.isEmpty
+                            ? const CircularProgressIndicator()
+                            : CircleAvatar(
+                                radius: 32,
+                                backgroundImage: AssetImage(profileImage!),
+                                onBackgroundImageError: (_, __) => setState(() {
                                   profileImage =
                                       null; // Handle broken image links
                                 }),
+                              ),
+                        const SizedBox(height: 10),
+                        Text(
+                          userData!['name'],
+                          style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
                           ),
-                      const SizedBox(height: 10),
-                      Text(
-                        userData!['name'],
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      Text(
-                        userData!['email'],
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
+                        Text(
+                          userData!['email'],
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      ListTile(
-                        leading: const Icon(Icons.edit),
-                        title: const Text("تعديل البيانات"),
-                        trailing: const Icon(Icons.arrow_forward_ios, size: 18),
-                        onTap: () async {
-                          final updated = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const UserProfileEdit(),
-                            ),
-                          );
+                        const SizedBox(height: 20),
+                        ListTile(
+                          leading: const Icon(Icons.edit),
+                          title: const Text("تعديل البيانات"),
+                          trailing:
+                              const Icon(Icons.arrow_forward_ios, size: 18),
+                          onTap: () async {
+                            final updated = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const UserProfileEdit(),
+                              ),
+                            );
 
-                          if (updated == true) {
-                            _fetchUserData();
-                          }
-                        },
-                      ),
-                      ListTile(
-                        leading: const Icon(Icons.lock),
-                        title: const Text("تغيير كلمة المرور"),
-                        trailing: const Icon(Icons.arrow_forward_ios, size: 18),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => const ChangePasswordScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          Icons.logout,
-                          color: Color(0xffDA2B52),
+                            if (updated == true) {
+                              _fetchUserData();
+                            }
+                          },
                         ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: Color(0xffDA2B52),
-                          size: 18,
+                        ListTile(
+                          leading: const Icon(Icons.lock),
+                          title: const Text("تغيير كلمة المرور"),
+                          trailing:
+                              const Icon(Icons.arrow_forward_ios, size: 18),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ChangePasswordScreen(),
+                              ),
+                            );
+                          },
                         ),
-                        title: const Text(
-                          "تسجيل الخروج",
-                          style: TextStyle(color: Color(0xffDA2B52)),
+                        ListTile(
+                          leading: const Icon(
+                            Icons.logout,
+                            color: Color(0xffDA2B52),
+                          ),
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color(0xffDA2B52),
+                            size: 18,
+                          ),
+                          title: const Text(
+                            "تسجيل الخروج",
+                            style: TextStyle(color: Color(0xffDA2B52)),
+                          ),
+                          onTap: _logout,
                         ),
-                        onTap: _logout,
-                      ),
-                      const Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 16, left: 16),
-                            child: Text(
-                              "مجتمعك",
-                              style: TextStyle(
-                                fontSize: 22,
-                                color: textcolor,
-                                fontWeight: FontWeight.bold,
+                        const Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 16, left: 16),
+                              child: Text(
+                                "مجتمعك",
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  color: textcolor,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
+                          ],
+                        ),
+                        ListTile(
+                          leading: const Icon(
+                            Icons.logout,
+                            color: Color(0xffDA2B52),
                           ),
-                        ],
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          Icons.logout,
-                          color: Color(0xffDA2B52),
+                          title: const Text(
+                            "تسجيل الخروج",
+                            style: TextStyle(color: Color(0xffDA2B52)),
+                          ),
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color(0xffDA2B52),
+                            size: 18,
+                          ),
+                          onTap: _logoutcom,
                         ),
-                        title: const Text(
-                          "تسجيل الخروج",
-                          style: TextStyle(color: Color(0xffDA2B52)),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: Color(0xffDA2B52),
-                          size: 18,
-                        ),
-                        onTap: _logoutcom,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
     );
   }
 }
@@ -310,86 +310,82 @@ class _UserProfileEditState extends State<UserProfileEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: bgcolor),
-      body:
-          isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      profileImage == null || profileImage!.isEmpty
-                          ? const CircularProgressIndicator()
-                          : CircleAvatar(
-                            radius: 32,
-                            backgroundImage: AssetImage(profileImage!),
-                            onBackgroundImageError:
-                                (_, __) => setState(() {
-                                  profileImage =
-                                      null; // Handle broken image links
-                                }),
-                          ),
-                      const SizedBox(height: 10),
-                      TextField(
-                        controller: nameController,
-                        decoration: const InputDecoration(
-                          labelText: "الاسم",
-                          prefixIcon: Icon(Icons.person),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      TextField(
-                        controller: emailController,
-                        decoration: const InputDecoration(
-                          labelText: "الايميل",
-                          prefixIcon: Icon(Icons.email),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      DropdownButtonFormField<String>(
-                        value: selectedCountry,
-                        decoration: const InputDecoration(
-                          labelText: "البلد",
-                          prefixIcon: Icon(Icons.flag),
-                        ),
-                        items:
-                            ["Egypt", "USA", "Canada", "UK", "Germany"]
-                                .map(
-                                  (country) => DropdownMenuItem(
-                                    value: country,
-                                    child: Text(country),
-                                  ),
-                                )
-                                .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            selectedCountry = value!;
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: _updateUserProfile,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: kPrimaryColor,
-                          minimumSize: const Size(double.infinity, 50),
-                        ),
-                        child: const Text(
-                          "حفظ",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ),
-                    ],
-                  ),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
               ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    profileImage == null || profileImage!.isEmpty
+                        ? const CircularProgressIndicator()
+                        : CircleAvatar(
+                            radius: 32,
+                            backgroundImage: AssetImage(profileImage!),
+                            onBackgroundImageError: (_, __) => setState(() {
+                              profileImage = null; // Handle broken image links
+                            }),
+                          ),
+                    const SizedBox(height: 10),
+                    TextField(
+                      controller: nameController,
+                      decoration: const InputDecoration(
+                        labelText: "الاسم",
+                        prefixIcon: Icon(Icons.person),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    TextField(
+                      controller: emailController,
+                      decoration: const InputDecoration(
+                        labelText: "الايميل",
+                        prefixIcon: Icon(Icons.email),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    DropdownButtonFormField<String>(
+                      value: selectedCountry,
+                      decoration: const InputDecoration(
+                        labelText: "البلد",
+                        prefixIcon: Icon(Icons.flag),
+                      ),
+                      items: ["Egypt", "USA", "Canada", "UK", "Germany"]
+                          .map(
+                            (country) => DropdownMenuItem(
+                              value: country,
+                              child: Text(country),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          selectedCountry = value!;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _updateUserProfile,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: kPrimaryColor,
+                        minimumSize: const Size(double.infinity, 50),
+                      ),
+                      child: const Text(
+                        "حفظ",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }
@@ -497,13 +493,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 onPressed: isLoading ? null : _changePassword,
-                child:
-                    isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text(
-                          "تأكيد",
-                          style: TextStyle(color: Colors.white, fontSize: 22),
-                        ),
+                child: isLoading
+                    ? const CircularProgressIndicator(color: Colors.white)
+                    : const Text(
+                        "تأكيد",
+                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      ),
               ),
             ],
           ),

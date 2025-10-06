@@ -10,7 +10,6 @@ import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/widgets/leaderboard_item.dart';
 import 'package:flutter/material.dart';
 
-
 class CommunityPopCode extends StatefulWidget {
   final String communityId;
   final String otpCode;
@@ -471,8 +470,7 @@ class _CommunityPopCodeState extends State<CommunityPopCode> {
         _buildIconButton("تعديل اللاعبون", Icons.edit, isSmallScreen, () {
           print('Edit player tapped');
         }),
-        _buildIconButton("عرض الجدول", Icons.calendar_month, isSmallScreen,
-            () {
+        _buildIconButton("عرض الجدول", Icons.calendar_month, isSmallScreen, () {
           print('View schedule tapped');
         }),
       ],

@@ -3,7 +3,7 @@ class Session {
   final String sessionName;
   final String sessionNumber;
   final String status;
-   final int sessionType;
+  final int sessionType;
 
   Session({
     required this.sessionId,
@@ -15,11 +15,10 @@ class Session {
 
   factory Session.fromJson(Map<String, dynamic> json) {
     return Session(
-      sessionId: json['session_id'],
-      sessionName: json['session_name'],
-      sessionNumber: json['session_number'],
-      status: json['status'],
-      sessionType: json["session_type"]
-    );
+        sessionId: json['session_id'],
+        sessionName: json['session_name'],
+        sessionNumber: json['session_number'],
+        status: json['status'],
+        sessionType: json["session_type"]);
   }
 }

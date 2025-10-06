@@ -30,7 +30,7 @@ class TextViewerWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Text(
               snapshot.data!,
-              style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
           );
         } else {

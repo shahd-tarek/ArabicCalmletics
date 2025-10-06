@@ -1,4 +1,3 @@
-
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:calmleticsarab/coach/screens/coach_home.dart';
@@ -6,8 +5,6 @@ import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-
-
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -24,38 +21,36 @@ class _PaymentPageState extends State<PaymentPage> {
 
   bool isLoading = false;
 
- Future<void> saveCard() async {
-  setState(() {
-    isLoading = true;
-  });
+  Future<void> saveCard() async {
+    setState(() {
+      isLoading = true;
+    });
 
-  bool success = await Api().saveCard(
-    nameController.text,
-    numberController.text,
-    dateController.text,
-    cvvController.text,
-  );
-
-  if (success) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Card saved successfully!")),
-                        
+    bool success = await Api().saveCard(
+      nameController.text,
+      numberController.text,
+      dateController.text,
+      cvvController.text,
     );
+
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Card saved successfully!")),
+      );
       Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(builder: (context) => const CoachHome()), 
-  );
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Failed to save card. Please try again.")),
-    );
+        context,
+        MaterialPageRoute(builder: (context) => const CoachHome()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Failed to save card. Please try again.")),
+      );
+    }
+
+    setState(() {
+      isLoading = false;
+    });
   }
-
-  setState(() {
-    isLoading = false;
-  });
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +98,8 @@ class _PaymentPageState extends State<PaymentPage> {
                             labelStyle: TextStyle(color: Colors.grey),
                             border: UnderlineInputBorder(),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: kPrimaryColor,
-                                  width: 2.0), 
+                              borderSide:
+                                  BorderSide(color: kPrimaryColor, width: 2.0),
                             ),
                           ),
                         ),
@@ -115,10 +109,9 @@ class _PaymentPageState extends State<PaymentPage> {
                             labelText: 'رقم البطاقة',
                             labelStyle: TextStyle(color: Colors.grey),
                             border: UnderlineInputBorder(),
-                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: kPrimaryColor,
-                                  width: 2.0), 
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: kPrimaryColor, width: 2.0),
                             ),
                           ),
                           keyboardType: TextInputType.number,
@@ -133,11 +126,10 @@ class _PaymentPageState extends State<PaymentPage> {
                                   labelText: 'تاريخ الانتهاء',
                                   labelStyle: TextStyle(color: Colors.grey),
                                   border: UnderlineInputBorder(),
-                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: kPrimaryColor,
-                                  width: 2.0), 
-                            ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: kPrimaryColor, width: 2.0),
+                                  ),
                                 ),
                                 keyboardType: TextInputType.datetime,
                               ),
@@ -149,12 +141,11 @@ class _PaymentPageState extends State<PaymentPage> {
                                 decoration: const InputDecoration(
                                   labelText: 'رمز التحقق (CVV)',
                                   labelStyle: TextStyle(color: Colors.grey),
-                                   border: UnderlineInputBorder(),
-                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: kPrimaryColor,
-                                  width: 2.0), 
-                            ),
+                                  border: UnderlineInputBorder(),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: kPrimaryColor, width: 2.0),
+                                  ),
                                 ),
                                 keyboardType: TextInputType.number,
                                 obscureText: true,

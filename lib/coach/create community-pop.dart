@@ -1,12 +1,9 @@
-
 // ignore_for_file: file_names
-
 
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 
 void createCommunityPopDialog(BuildContext context) {
   List<TextEditingController> textControllers =
@@ -76,7 +73,10 @@ void createCommunityPopDialog(BuildContext context) {
                         children: List.generate(
                           4,
                           (index) => _buildOTPBox(
-                            index, textControllers, focusNodes, context,
+                            index,
+                            textControllers,
+                            focusNodes,
+                            context,
                           ),
                         ),
                       ),

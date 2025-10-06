@@ -21,10 +21,9 @@ class Api {
     String userRole,
   ) async {
     debugPrint("Signing up as: $userRole");
-    String signUpUrl =
-        userRole == "Coach"
-            ? "https://calmletics-production.up.railway.app/api/coach/sign"
-            : "$baseUrl/player/sign";
+    String signUpUrl = userRole == "Coach"
+        ? "https://calmletics-production.up.railway.app/api/coach/sign"
+        : "$baseUrl/player/sign";
 
     try {
       final response = await http.post(
@@ -66,10 +65,9 @@ class Api {
     String password,
     String userRole,
   ) async {
-    String loginUrl =
-        userRole == "Coach"
-            ? "https://calmletics-production.up.railway.app/api/coach/login"
-            : "$baseUrl/player/login";
+    String loginUrl = userRole == "Coach"
+        ? "https://calmletics-production.up.railway.app/api/coach/login"
+        : "$baseUrl/player/login";
 
     final response = await http.post(
       Uri.parse(loginUrl),
@@ -450,10 +448,9 @@ class Api {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final List<Session> sessions =
-          (data['session_list'] as List)
-              .map((json) => Session.fromJson(json))
-              .toList();
+      final List<Session> sessions = (data['session_list'] as List)
+          .map((json) => Session.fromJson(json))
+          .toList();
       return {
         'percentage': data['Percentage'],
         'count': data['count'],
@@ -946,8 +943,7 @@ class Api {
         final errorData = jsonDecode(response.body);
         return {
           "success": false,
-          "error":
-              errorData["error"] ??
+          "error": errorData["error"] ??
               "Failed to delete community. Status code: ${response.statusCode}",
         };
       }
