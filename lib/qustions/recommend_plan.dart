@@ -137,7 +137,7 @@ void showRecommendationDialog(BuildContext context) {
 
                               final response = await http.post(
                                 Uri.parse(
-                                  'https://calmletics-production.up.railway.app/api/player/recommended ',
+                                  'https://calmletics-production.up.railway.app/api/player/recommended',
                                 ),
                                 headers: {
                                   'Authorization': 'Bearer $token',
