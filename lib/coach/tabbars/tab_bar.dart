@@ -36,7 +36,7 @@ class CustomTabBar extends StatelessWidget {
           children: [
             _buildTabButton('منخفض'),
             _buildTabButton('متوسط'),
-            _buildTabButton('مرتفع'),
+            _buildTabButton('عالي'),
           ],
         ),
       ),
