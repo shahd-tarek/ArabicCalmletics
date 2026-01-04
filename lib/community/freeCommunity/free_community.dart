@@ -5,7 +5,7 @@ import 'package:calmleticsarab/community/coachCommunity/community-pop-code.dart'
 import 'package:calmleticsarab/community/freeCommunity/chat.dart';
 import 'package:calmleticsarab/community/freeCommunity/free_Leaderboard.dart';
 import 'package:calmleticsarab/http/api.dart';
-import 'package:calmleticsarab/plan/plan_page.dart';
+import 'package:calmleticsarab/features/plan/View/plan_page.dart';
 import 'package:calmleticsarab/widgets/option_card.dart';
 
 class freeCommunity extends StatefulWidget {

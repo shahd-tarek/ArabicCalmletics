@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:calmleticsarab/helper/token_helper.dart';
-import 'package:calmleticsarab/models/login_model.dart';
-import 'package:calmleticsarab/models/plan_model.dart';
-import 'package:calmleticsarab/models/signup_model.dart';
+import 'package:calmleticsarab/features/auth/data/login_model.dart';
+import 'package:calmleticsarab/features/plan/data/plan_model.dart';
+import 'package:calmleticsarab/features/auth/data/signup_model.dart';
 
 class Api {
   static const String baseUrl =

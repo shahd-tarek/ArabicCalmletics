@@ -1,7 +1,7 @@
 import 'package:calmleticsarab/constant.dart';
 import 'package:calmleticsarab/http/api.dart';
 import 'package:calmleticsarab/models/session_model.dart';
-import 'package:calmleticsarab/plan/plan_day_task.dart';
+import 'package:calmleticsarab/features/plan/View/plan_day_task.dart';
 import 'package:flutter/material.dart';
 
 class ChoosePlanPage extends StatelessWidget {
